@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Prueva;
-
+use App\Http\Livewire\IndexView;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +14,14 @@ use App\Http\Livewire\Prueva;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
-Route::get('ver', Prueva::class)->name('ver');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', IndexView::class)->name('dashboard');
+});
+
