@@ -12,8 +12,6 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="stylesheet" href="css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="css/templatemo-style.css">
         @livewireStyles
 
         <!-- Scripts -->
