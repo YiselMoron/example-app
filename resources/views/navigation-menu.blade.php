@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class=" border-b bg-white" >
+<nav x-data="{ open: false }" class=" border-b bg-white fixed" >
 
     <!-- Primary Navigation Menu -->
 

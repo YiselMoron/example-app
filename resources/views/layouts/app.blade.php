@@ -16,7 +16,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <style>
+        {{-- <style>
             html {
                 background: url('{{ asset('img/Principal.png') }}') no-repeat top fixed;
                 -webkit-background-size: cover;
@@ -25,7 +25,7 @@
                 background-size: cover;
 
                 }
-        </style>
+        </style> --}}
     </head>
 
     <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50" class="font-sans antialiased">
