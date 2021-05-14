@@ -28,10 +28,10 @@
         </style> --}}
     </head>
 
-    <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50" class="font-sans antialiased">
+    <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50" class="font-sans antialiased ">
         <x-jet-banner />
 
-        <div class="min-h-screen ">
+        <div class="min-h-screen">
             @livewire('navigation-menu')
 
 
@@ -46,3 +46,4 @@
         @livewireScripts
     </body>
 </html>
+

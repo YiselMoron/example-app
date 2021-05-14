@@ -15,10 +15,11 @@ class CreateDetallePETable extends Migration
     {
         Schema::create('detalle_p_e', function (Blueprint $table) {
             $table->id();
-            
+
             $table->integer('CantidadResivida');
             $table->string('Estado', 15);
             $table->date('FechaLlegada');
+            $table->string('Observacion', 250);
 
             $table->unsignedBigInteger('IdEquipo');
             $table->foreign('IdEquipo')->references('id')->on('equipo');

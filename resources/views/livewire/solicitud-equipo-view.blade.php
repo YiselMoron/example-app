@@ -1,7 +1,7 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-gray-50" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex h-screen overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
       <!-- Loading screen -->
       <div
         x-ref="loading"
@@ -23,7 +23,11 @@
 
         <!-- Main content -->
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
-         <h3 class="mt-6 text-xl">Soportes Pendientes</h3>
+            <div class="grid grid-cols-2">
+                <div class=" text-left"><h3 class="mt-6 text-xl">Pedido Equipo</h3> </div>
+                <div class=" ml-auto mt-3"><button class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
+                </div>
+            </div>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -41,7 +45,27 @@
                           scope="col"
                           class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
-                          Tipo Solicitud
+                          Tipo Equipo
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Cant. Pedido
+                        </th>
+                        <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
+                          Fecha Pedido
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Cant. Resivida
+                        </th>
+                        <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
+                          Fecha Llegada
                         </th>
                         <th
                           scope="col"
@@ -49,43 +73,54 @@
                         >
                           Estado
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
-                          Area
-                        </th>
 
                         <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
-                          accion
+                          Accion
                         </th>
+
                       </tr>
 
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <tr class="transition-all hover:bg-gray-100 hover:shadow-lg">
+                        <tr class="transition-all hover:bg-gray-100 hover:shadow-lg text-center">
                           <td class="px-6 py-4 whitespace-nowrap">
 
-                                <div class="text-sm font-medium text-gray-900">Yisel Moron F</div>
-                                <div class="text-sm text-gray-500">ymoronflores@gmail.com</div>
+                                <div class="text-sm font-medium text-gray-900">Laptop-Dell XPS 15</div>
+
 
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Mantenimiento</div>
-                            <div class="text-sm text-gray-500">Soporte/Mantenimiento/Equipo</div>
+                            <div class="text-sm text-gray-900">Laptop</div>
+
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">5</div>
+
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">12/02/2021</div>
+
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">4</div>
+
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">28/02/2021</div>
+
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <span
                               class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full"
                             >
-                              Pendiente
+                              Incompleto
                             </span>
 
                           </td>
-                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">Admin</td>
-                          <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Ver/</a>
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Editar</a>
                           </td>
                         </tr>
                     </tbody>
@@ -115,3 +150,5 @@
     </script>
 </div>
 </div>
+
+

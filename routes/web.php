@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\IndexView;
+use App\Http\Livewire\PersonaView;
+use App\Http\Livewire\SolicitudEquipoView;
+use App\Http\Livewire\SolicitudView;
+use App\Http\Livewire\EquipoView;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +27,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', IndexView::class)->name('dashboard');
+    Route::get('/Persona', PersonaView::class)->name('Persona');
+    Route::get('/PedidoEquipo', SolicitudEquipoView::class)->name('PedidoEquipo');
+    Route::get('/Soporte', SolicitudView::class)->name('Soporte');
+    Route::get('/Equipo', EquipoView::class)->name('Equipo');
 });
 
