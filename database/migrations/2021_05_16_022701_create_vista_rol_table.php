@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoequipoTable extends Migration
+class CreateVistaRolTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateTipoequipoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipoequipo', function (Blueprint $table) {
+        Schema::create('vistaRol', function (Blueprint $table) {
             $table->id();
-            $table->string('NombreTipoequipo', 50);
+            $table->unsignedBigInteger('idRol');
+            $table->foreign('idRol')->references('id')->on('rol');
+            $table->unsignedBigInteger('idVista');
+            $table->foreign('idVista')->references('id')->on('vista');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateTipoequipoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipoequipo');
+        Schema::dropIfExists('vistaRol');
     }
 }

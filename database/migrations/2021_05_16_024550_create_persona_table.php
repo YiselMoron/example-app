@@ -15,18 +15,14 @@ class CreatePersonaTable extends Migration
     {
         Schema::create('persona', function (Blueprint $table) {
             $table->id();
-            $table->string('NombreCompleto', 100);
-            $table->integer('Celular');
-
-            $table->unsignedBigInteger('IdCargo');
-            $table->foreign('IdCargo')->references('id')->on('cargo');
-
-            $table->unsignedBigInteger('IdDepartamento');
-            $table->foreign('IdDepartamento')->references('id')->on('departamento');
-            
-            $table->unsignedBigInteger('IdUser');
-            $table->foreign('IdUser')->references('id')->on('users');
-            
+            $table->string('nombreCompleto');
+            $table->integer('celular');
+            $table->unsignedBigInteger('idUser');
+            $table->foreign('idUser')->references('id')->on('users');
+            $table->unsignedBigInteger('idCargo');
+            $table->foreign('idCargo')->references('id')->on('cargo');
+            $table->unsignedBigInteger('idDepartamento');
+            $table->foreign('idDepartamento')->references('id')->on('departamento');
             $table->timestamps();
         });
     }

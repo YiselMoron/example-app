@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePedidoequipoTable extends Migration
+class CreateMantenimientoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreatePedidoequipoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedidoequipo', function (Blueprint $table) {
+        Schema::create('mantenimiento', function (Blueprint $table) {
             $table->id();
-            
-            $table->integer('Cantidad');
-            $table->date('FechaPedido');
-            
-            $table->unsignedBigInteger('IdPersona');
-            $table->foreign('IdPersona')->references('id')->on('persona');
-
+            $table->date('fechaInicio');
+            $table->date('fechaFin');
+            $table->unsignedBigInteger('idAsistencia');
+            $table->foreign('idAsistencia')->references('id')->on('asistenciaTecnica');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreatePedidoequipoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidoequipo');
+        Schema::dropIfExists('mantenimiento');
     }
 }
