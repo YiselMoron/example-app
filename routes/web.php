@@ -6,6 +6,9 @@ use App\Http\Livewire\PersonaView;
 use App\Http\Livewire\SolicitudEquipoView;
 use App\Http\Livewire\SolicitudView;
 use App\Http\Livewire\EquipoView;
+use App\Http\Livewire\AsignacionEquipoView;
+use App\Http\Livewire\SolicitudAlmacenView;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,5 +34,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/PedidoEquipo', SolicitudEquipoView::class)->name('PedidoEquipo');
     Route::get('/Soporte', SolicitudView::class)->name('Soporte');
     Route::get('/Equipo', EquipoView::class)->name('Equipo');
+    Route::get('/AsignacionEquipo', AsignacionEquipoView::class)->name('AsignacionEquipo');
+    Route::get('/SolicitudAlmacen', SolicitudAlmacenView::class)->name('SolicitudAlmacen');
+
 });
 

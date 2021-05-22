@@ -16,11 +16,11 @@ class DepartamentoSeeder extends Seeder
     {
         DB::table('departamento')->insert([
             [
-                'NombreDepartamento' => 'RRHH'
+                'nombre' => 'RRHH'
             ], [
-                'NombreDepartamento' => 'Sistemas'
+                'nombre' => 'Sistemas'
             ], [
-                'NombreDepartamento' => 'Administración'
+                'nombre' => 'Administración'
             ]
         ]);
     }

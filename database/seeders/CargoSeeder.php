@@ -16,11 +16,11 @@ class CargoSeeder extends Seeder
     {
         DB::table('cargo')->insert([
             [
-                'NombreCargo' => 'Secretaria'
+                'nombre' => 'Secretaria'
             ], [
-                'NombreCargo' => 'Gerente General'
+                'nombre' => 'Gerente General'
             ], [
-                'NombreCargo' => 'Auxiliar de Sistemas'
+                'nombre' => 'Auxiliar de Sistemas'
             ]
         ]);
     }

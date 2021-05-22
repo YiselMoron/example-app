@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return void     
      */
     public function run()
     {
@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'name' => 'Yisel Moron F',
                 'email' => 'ymoronflores@gmail.com',
                 'password' => Hash::make('123456789'),
+                'idRol' => '1',
             ]
         ]);
     }

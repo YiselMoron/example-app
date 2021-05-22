@@ -29,6 +29,12 @@
                     <x-jet-nav-link href="{{ route('Soporte') }}" :active="request()->routeIs('Soporte')">
                         {{ __('Soporte') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('AsignacionEquipo') }}" :active="request()->routeIs('AsignacionEquipo')">
+                        {{ __('Asignacion Equipo') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('SolicitudAlmacen') }}" :active="request()->routeIs('SolicitudAlmacen')">
+                        {{ __('Solicitud Almacen') }}
+                    </x-jet-nav-link>
                 </div>
 
             </div>

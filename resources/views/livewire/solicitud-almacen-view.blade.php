@@ -23,11 +23,27 @@
 
         <!-- Main content -->
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
-            <div class="grid grid-cols-2">
-                <div class=" text-left"><h3 class="mt-6 text-xl">Solicitud</h3> </div>
-                <div class=" ml-auto mt-3"><button class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
-                </div>
-            </div>
+
+         <div class="grid grid-cols-2">
+             <div class=" text-left"><h3 class="mt-6 text-xl"> Solicitu Almacen </h3> </div>
+             <div class=" ml-auto mt-3"><button onclick="document.getElementById('modal-create-rol').showModal()"  class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
+             </div>
+
+            <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
+                <div class="flex flex-col w-full h-auto ">
+                     <!-- Header -->
+                     <div class="flex w-full h-auto justify-center items-center">
+                       <!--Header End-->
+                     </div>
+                       <!-- Modal Content-->
+                        <div>
+                            @livewire('registro-persona-view')
+                        </div>
+                       <!-- End of Modal Content-->
+                     </div>
+             </dialog>
+
+         </div>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -39,19 +55,7 @@
                           scope="col"
                           class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
-                          Nombre
-                        </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
-                          Tipo Solicitud
-                        </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
-                          Estado
+                          Nombre Completo
                         </th>
                         <th
                           scope="col"
@@ -59,44 +63,66 @@
                         >
                           Area
                         </th>
-                        <th scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
-                          Fecha Completado
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Cargo
                         </th>
-                        <th scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
-                          accion
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Email
                         </th>
 
+                        <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
+                          Celular
+                        </th>
+                        <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
+                          Accion
+                        </th>
                       </tr>
 
+
+
+
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 ">
+                    <tbody class="bg-white divide-y divide-gray-200">
                         <tr class="transition-all hover:bg-gray-100 hover:shadow-lg">
                           <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                              <div class="flex-shrink-0 w-10 h-10">
+                                <img
+                                  class="w-10 h-10 rounded-full"
+                                  src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">Ahmed Kamel</div>
 
-                                <div class="text-sm font-medium text-gray-900">Yisel Moron F</div>
-                                <div class="text-sm text-gray-500">ymoronflores@gmail.com</div>
-
-
+                              </div>
+                            </div>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Soporte/Mantenimiento/Equipo</div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full"
-                            >
-                              Completado
-                            </span>
+                            <div class="text-sm text-gray-900">RRHH</div>
 
                           </td>
-                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">Administracion</td>
-                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap text-center">09/04/2021</td>
+                          <td class="px-6 py-4 whitespace-nowrap">Administrador</td>
+
+                          <td class="text-sm text-gray-500">ahmed.kamel@example.com</td>
+
                           <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Ver</a>
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900">23456789</a>
+                          </td>
+                          <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                           </td>
                         </tr>
+
                     </tbody>
                   </table>
                 </div>
@@ -124,4 +150,3 @@
     </script>
 </div>
 </div>
-

@@ -26,8 +26,23 @@
 
          <div class="grid grid-cols-2">
              <div class=" text-left"><h3 class="mt-6 text-xl">Personal Administrativo</h3> </div>
-             <div class=" ml-auto mt-3"><button class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
+             <div class=" ml-auto mt-3"><button onclick="document.getElementById('modal-create-rol').showModal()"  class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
              </div>
+
+            <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
+                <div class="flex flex-col w-full h-auto ">
+                     <!-- Header -->
+                     <div class="flex w-full h-auto justify-center items-center">
+                       <!--Header End-->
+                     </div>
+                       <!-- Modal Content-->
+                        <div>
+                            @livewire('registro-persona-view')
+                        </div>
+                       <!-- End of Modal Content-->
+                     </div>
+             </dialog>
+
          </div>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
