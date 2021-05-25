@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Equipo;
 use Livewire\Component;
 
 class EquipoView extends Component
 {
     public function render()
     {
-        return view('livewire.equipo-view');
+        $equipos = Equipo::all();
+        return view('livewire.equipo-view', compact('equipos'));
     }
 }

@@ -23,17 +23,19 @@
                     <x-jet-nav-link href="{{ route('Equipo') }}" :active="request()->routeIs('Equipo')">
                         {{ __('Equipo') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('PedidoEquipo') }}" :active="request()->routeIs('PedidoEquipo')">
-                        {{ __('Pedido Equipo') }}
-                    </x-jet-nav-link>
+
                     <x-jet-nav-link href="{{ route('Soporte') }}" :active="request()->routeIs('Soporte')">
                         {{ __('Soporte') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('AsignacionEquipo') }}" :active="request()->routeIs('AsignacionEquipo')">
-                        {{ __('Asignacion Equipo') }}
-                    </x-jet-nav-link>
+
                     <x-jet-nav-link href="{{ route('SolicitudAlmacen') }}" :active="request()->routeIs('SolicitudAlmacen')">
                         {{ __('Solicitud Almacen') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('PedidoEquipo') }}" :active="request()->routeIs('PedidoEquipo')">
+                        {{ __('Solicitud Equipo') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('AsignacionEquipo') }}" :active="request()->routeIs('AsignacionEquipo')">
+                        {{ __('Asignacion Equipo') }}
                     </x-jet-nav-link>
                 </div>
 
@@ -58,6 +60,7 @@
                                         </svg>
                                     </button>
                                 </span>
+
                             @endif
                         </x-slot>
 

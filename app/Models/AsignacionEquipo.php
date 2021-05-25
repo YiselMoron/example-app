@@ -11,9 +11,11 @@ class AsignacionEquipo extends Model
 
     protected $table='asignacionEquipo';
 
-    public function equipo(){
+    public function equipo()
+    {
 
         return $this->belongsTo(FormularioEquipo::class,'idFormulario');
+       
     }
-    
+
 }

@@ -1,43 +1,59 @@
-<div>
-    <div class="font-sans">
-        <div class="relative  flex flex-col sm:justify-center items-center bg-transparent ">
-            <div class="relative sm:max-w-sm w-full">
-                <div class="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
-                <div class="card bg-green-500 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
-                <div class="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
-                    <label for="" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
-                        Registrate
-                    </label>
-                    <form method="#" action="#" class="mt-10">
+<div class="flex h-screen bg-green-200 items-center justify-center  mt-32 mb-32">
+    <div class="grid bg-white rounded-lg shadow-2xl ">
 
-                        <div>
-                            <input type="text" placeholder="Nombre Completo" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
-                        </div>
-
-                        <div class="mt-7">
-                            <input type="text" placeholder="Celular" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
-                        </div>
-
-                        <div class="mt-7">
-                        
-                        </div>
-
-
-                        <div class="mt-7">
-                            
-                        </div>
-
-
-
-                        <div class="mt-7">
-                            <button class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-                                Registrar
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+      <div class="flex justify-center">
+        <div class="flex">
+          <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Registro</h1>
         </div>
-    </div>
+      </div>
 
-</div>
+      <div class="grid grid-cols-1 mt-5 mx-7">
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Input 1</label>
+        <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Input 1" />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+        <div class="grid grid-cols-1">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Input 2</label>
+          <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Input 2" />
+        </div>
+        <div class="grid grid-cols-1">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Input 3</label>
+          <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Input 3" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 mt-5 mx-7">
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Selection</label>
+        <select class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-1 mt-5 mx-7">
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Another Input</label>
+        <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Another Input" />
+      </div>
+
+      <div class="grid grid-cols-1 mt-5 mx-7">
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-1">Upload Photo</label>
+          <div class='flex items-center justify-center w-full'>
+              <label class='flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-green-300 group'>
+                  <div class='flex flex-col items-center justify-center pt-7'>
+                    <svg class="w-10 h-10 text-green-500 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <p class='lowercase text-sm text-gray-400 group-hover:text-green-600 pt-1 tracking-wider'>Select a photo</p>
+                  </div>
+                <input type='file' class="hidden" />
+              </label>
+          </div>
+      </div>
+
+      <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+        <button class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
+        <button class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
+      </div>
+
+    </div>
+  </div>

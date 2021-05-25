@@ -16,9 +16,11 @@ class CreateEquipoTable extends Migration
         Schema::create('equipo', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->integer('Stock');
             $table->unsignedBigInteger('idMarca');
             $table->foreign('idMarca')->references('id')->on('marca');
             $table->unsignedBigInteger('idTipoEquipo');
+
             $table->foreign('idTipoEquipo')->references('id')->on('tipoEquipo');
             $table->timestamps();
         });

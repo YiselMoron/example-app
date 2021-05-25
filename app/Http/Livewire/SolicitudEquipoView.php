@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\SolicitudEquipo;
 use Livewire\Component;
 
 class SolicitudEquipoView extends Component
 {
     public function render()
     {
-        return view('livewire.solicitud-equipo-view');
+        $SolicitudEquipos=SolicitudEquipo::all();
+        return view('livewire.solicitud-equipo-view',compact('SolicitudEquipos'));
     }
 }
