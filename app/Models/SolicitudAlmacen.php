@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class SolicitudAlmacen extends Model
 {
     use HasFactory;
-    protected $table= 'SolicitudAlmacen';
+    protected $table= 'solicitudAlmacen';
+
+    public function equipo()
+    {
+        return $this->belongsTo(Equipo::class,'idEquipo');
+    }
+
+    public function pedidoEquipo()
+    {
+        return $this->belongsTo(PedidoEquipo::class,'idPedidoEquipo');
+    }
+
 }

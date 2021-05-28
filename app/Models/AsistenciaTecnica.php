@@ -11,8 +11,18 @@ class AsistenciaTecnica extends Model
 
     protected $table='asistenciaTecnica';
 
-    public function equipo(){
+    public function persona(){
 
         return $this->belongsTo(Persona::class,'idPersona');
+    }
+
+    public function soporte(){
+
+        return $this->hasMany(Soporte::class,'idAsistencia');
+    }
+
+    public function mantenimiento(){
+
+        return $this->hasMany(Mantenimiento::class,'idAsistencia');
     }
 }

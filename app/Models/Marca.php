@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
     use HasFactory;
+
+    protected $table='marca';
+
+    public function equipo()
+    {
+        return $this->hasMany(Equipo::class,'idMarca');
+    }
+
 }

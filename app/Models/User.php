@@ -60,7 +60,12 @@ class User extends Authenticatable
     ];
 
     public function persona(){
-    
+
         return $this->hasOne(Persona::class,'IdUser');
-    } 
+    }
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class,'idRol');
+    }
 }

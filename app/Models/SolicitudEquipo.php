@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class SolicitudEquipo extends Model
 {
     use HasFactory;
-    protected $table='SolicitudEquipo';
+    protected $table='solicitudEquipo';
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class,'idPersona');
+    }
+
+    public function folmularioEquipo()
+    {
+        return $this->hasMany(FormularioEquipo::class,'idSolicitud');
+    }
+
 }

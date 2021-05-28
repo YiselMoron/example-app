@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Mantenimiento extends Model
 {
     use HasFactory;
+
+    protected $table='mantenimiento';
+
+    public function asistenciaTecnica()
+    {
+        return $this->belongsTo(AsistenciaTecnica::class,'idAsistencia');
+    }
+
+
 }
