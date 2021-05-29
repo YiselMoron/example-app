@@ -1,59 +1,99 @@
-<div class="flex h-screen bg-green-200 items-center justify-center  mt-32 mb-32">
+<div class="flex bg-green-200 items-center justify-center ">
+<form wire:submit.prevent="save">
     <div class="grid bg-white rounded-lg shadow-2xl ">
 
-      <div class="flex justify-center">
+
+      <div class="flex justify-center" >
         <div class="flex">
           <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Registro</h1>
         </div>
       </div>
 
       <div class="grid grid-cols-1 mt-5 mx-7">
-        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Input 1</label>
-        <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Input 1" />
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre Completo</label>
+        <input name="VPnombreCompleto" id="VPnombreCompleto" wire:model="VPnombreCompleto"
+         class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" />
+         @if($errors->has('VPnombreCompleto'))
+            <p>{{$errors->first('VPnombreCompleto')}}</p>
+         @endif
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
         <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Input 2</label>
-          <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Input 2" />
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Departamento</label>
+            <select name="VPdepartamento" id="VPdepartamento" wire:model="VPdepartamento"
+            class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
+                @foreach ($departamentos as $departamento)
+                <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+
+                @endforeach
+            </select>
+            @if($errors->has('VPdepartamento'))
+            <p>{{$errors->first('VPdepartamento')}}</p>
+         @endif
         </div>
         <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Input 3</label>
-          <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Input 3" />
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Cargo</label>
+            <select name="VPcargo" id="VPcargo" wire:model="VPcargo"
+             class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
+                @foreach ($cargos as $cargo)
+                <option value="{{$cargo->id}}">{{$cargo->nombre}}</option>
+
+                @endforeach
+            </select>
+            @if($errors->has('VPcargo'))
+            <p>{{$errors->first('VPcargo')}}</p>
+         @endif
         </div>
       </div>
 
       <div class="grid grid-cols-1 mt-5 mx-7">
-        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Selection</label>
-        <select class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Celular</label>
+        <input name="VPcelular" id="VPcelular" wire:model="VPcelular"
+         class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" />
+         @if($errors->has('VPcelular'))
+            <p>{{$errors->first('VPcelular')}}</p>
+         @endif
+      </div>
+
+      <div class="grid grid-cols-1 mt-5 mx-7">
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
+        <input name="VPemail" id="VPemail" wire:model="VPemail"
+        class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="email"/>
+        @if($errors->has('VPemail'))
+            <p>{{$errors->first('VPemail')}}</p>
+         @endif
+      </div>
+
+      <div class="grid grid-cols-1 mt-5 mx-7">
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Password</label>
+        <input name="VPpassword" id="VPpassword" wire:model="VPpassword"
+        class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="password"  autocomplete="new-password"/>
+        @if($errors->has('VPpassword'))
+            <p>{{$errors->first('VPpassword')}}</p>
+         @endif
+      </div>
+
+      <div class="grid grid-cols-1 mt-5 mx-7">
+        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rol</label>
+        <select name="VProl" id="VProl" wire:model="VProl"
+         class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
+            @foreach ($roles as $rol)
+                <option value="{{$rol->id}}">{{$rol->nombre}}</option>
+
+                @endforeach
         </select>
+        @if($errors->has('VProl'))
+            <p>{{$errors->first('VProl')}}</p>
+         @endif
       </div>
 
-      <div class="grid grid-cols-1 mt-5 mx-7">
-        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Another Input</label>
-        <input class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" placeholder="Another Input" />
-      </div>
-
-      <div class="grid grid-cols-1 mt-5 mx-7">
-        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-1">Upload Photo</label>
-          <div class='flex items-center justify-center w-full'>
-              <label class='flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-green-300 group'>
-                  <div class='flex flex-col items-center justify-center pt-7'>
-                    <svg class="w-10 h-10 text-green-500 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <p class='lowercase text-sm text-gray-400 group-hover:text-green-600 pt-1 tracking-wider'>Select a photo</p>
-                  </div>
-                <input type='file' class="hidden" />
-              </label>
-          </div>
-      </div>
 
       <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-        <button class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
-        <button class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
+        <button onclick="document.getElementById('modal-create-rol').close()" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
+        <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
       </div>
 
     </div>
-  </div>
+</form>
+</div>

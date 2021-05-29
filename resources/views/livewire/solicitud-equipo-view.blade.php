@@ -41,12 +41,7 @@
                         >
                           Nombre
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
-                          Tipo Equipo
-                        </th>
+
                         <th
                           scope="col"
                           class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
@@ -90,11 +85,7 @@
 
 
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Laptop</div>
-
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                        <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-gray-900">5</div>
 
                           </td>

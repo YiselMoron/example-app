@@ -26,7 +26,8 @@
 
          <div class="grid grid-cols-2">
              <div class=" text-left"><h3 class="mt-6 text-xl">Personal Administrativo</h3> </div>
-             <div class=" ml-auto mt-3"><button onclick="document.getElementById('modal-create-rol').showModal()"  class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
+             <div class=" ml-auto mt-3"><button onclick="document.getElementById('modal-create-rol').showModal()"
+                 class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">Registrar</button>
              </div>
 
             <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
@@ -103,12 +104,12 @@
                             </div>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{$item->idDepartamento}}</div>
+                            <div class="text-sm text-gray-900">{{$item->departamento->nombre}}</div>
 
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">{{ $item->idCargo }}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">{{ $item->cargo->nombre }}</td>
 
-                          <td class="text-sm text-center text-gray-500" >{{ $item->idUser }}</td>
+                          <td class="text-sm text-center text-gray-500" >{{ $item->user->name }}</td>
 
                           <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">{{ $item->celular }}</td>
 
