@@ -25,7 +25,12 @@
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Solicitud</h3> </div>
-                <div class=" ml-auto mt-3"><button class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
+                <div class=" ml-auto mt-3">
+                    <button onclick="document.getElementById('modal-create-rol').showModal()"
+                 class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block
+                 bg-transparent border border-green-500  text-green-500
+                  hover:bg-green-700 hover:text-white hover:border-green-500 "
+                  >Registrar</button>
                 </div>
             </div>
           <div class="flex flex-col mt-6">

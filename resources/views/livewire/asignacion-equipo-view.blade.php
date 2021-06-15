@@ -23,20 +23,12 @@
                     <thead class="bg-gray-100 border-b-8 border-green-500">
                         <tr>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                            >Personal
+                            >Responsable
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                            >formulario
+                            >Codigo Almacen
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                            >Nombre Equipo
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase"
-                            >Serie
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                            >Codigo
-                        </th>
+
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase"
                             >Fecha Entrega
                         </th>
@@ -55,17 +47,9 @@
                                 <div class="text-sm font-medium text-gray-900">Yisel Moron Flores</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $item->idFormulario }}</div>
+                                <div class="text-sm text-gray-900">{{ $item->formularioEquipo->solicitudEquipo->fechaSolicitud}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">XD</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $item->serie }}</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $item->codigo }}</div>
-                            </td>
+
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $item->fechaEntrega}}</div>
                             </td>
