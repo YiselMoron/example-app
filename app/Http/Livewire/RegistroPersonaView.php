@@ -34,43 +34,28 @@ class RegistroPersonaView extends Component
             'VProl'=> 'required',
         ]);
 //7
-        $user = new User;
-        $user->name = $this->VPnombreCompleto;
-        $user->email = $this->VPemail;
 
-        $user->password = Hash::make($this->VPpassword);
-        $user->idRol = $this->VProl;
-        $user->save();
-        $people = new Persona;
-        $people->nombreCompleto = $this->VPnombreCompleto;
-        $people->celular = $this->VPcelular;
-        $people->idDepartamento = $this->VPdepartamento;
-        $people->idCargo = $this->VPcargo;
-        $people->idUser = $user->id;
-        $people->save();
 
-        // DB::beginTransaction();
-        // try{
+        DB::beginTransaction();
+        try{
+            $user = new User;
+            $user->name = $this->VPnombreCompleto;
+            $user->email = $this->VPemail;
 
-        //     $item = new User;
-        //     $item->name = $this->VPnombreCompleto;
-        //     $item->email = $this->VPemail;
-        //     $item->password = $this->VPpassword;
-        //     $item->idRol = $this->VProl;
-        //     $item->save();
-        //     $people = new Persona;
-        //     $people->nombreCompleto = $this->VPnombreCompleto;
-        //     $people->celular = $this->VPcelular;
-        //     $people->idDepartamento = $this->VPdepartamento;
-        //     $people->idCargo = $this->VPcargo;
-        //     $people->idUser = $item->id;
-        //     $people->save();
-        //     DB::commit();
-        // }
-        // catch(\Exception $e){
-        //     DB::rollBack();
-
-        // }
+            $user->password = Hash::make($this->VPpassword);
+            $user->idRol = $this->VProl;
+            $user->save();
+            $people = new Persona;
+            $people->nombreCompleto = $this->VPnombreCompleto;
+            $people->celular = $this->VPcelular;
+            $people->idDepartamento = $this->VPdepartamento;
+            $people->idCargo = $this->VPcargo;
+            $people->idUser = $user->id;
+            $people->save();
+        }
+        catch(\Exception $e){
+             DB::rollBack();
+        }
         $this->emit('refreshParent');
     }
 
