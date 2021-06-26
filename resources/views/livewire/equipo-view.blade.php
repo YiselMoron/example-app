@@ -2,26 +2,14 @@
     <!-- component -->
 <div class="pt-3">
     <div class="flex bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
-      <!-- Loading screen -->
-      <div
-        x-ref="loading"
-        class="fixed inset-0 z-50 flex items-center justify-center text-black "
-        style="backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)"
-      >
-        Loading.....
-      </div>
-        <!-- Sidebar footer -->
-        <div class="flex-shrink-0 p-2 border-t max-h-14">
-
-        </div>
-      </aside>
-
+     
+     
       <div class="flex flex-col flex-1 h-full overflow-hidden">
 
         <!-- Main content -->
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
             <div class="grid grid-cols-2">
-                <div class=" text-left"><h3 class="mt-6 text-xl">Lista de Equipo</h3> </div>
+                <div class=" text-left"><h3 class="mt-6 text-xl">Inventario</h3> </div>
                 <div class=" ml-auto mt-3">
                     <button onclick="document.getElementById('modal-create-rol').showModal()"
                     class="px-6 py-2.5  mb-4  text-base
@@ -32,15 +20,11 @@
                   <!--LLAMAR A REGISTRO + -->
             <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
                 <div class="flex flex-col w-full h-auto ">
-                     <!-- Header -->
                      <div class="flex w-full h-auto justify-center items-center">
-                       <!--Header End-->
                      </div>
-                       <!-- Modal Content-->
                         <div>
                             @livewire('registro-equipo')
                         </div>
-                       <!-- End of Modal Content-->
                      </div>
              </dialog>
 
@@ -93,20 +77,6 @@
 
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-    <script>
-      const setup = () => {
-        return {
-          loading: true,
-          isSidebarOpen: false,
-          toggleSidbarMenu() {
-            this.isSidebarOpen = !this.isSidebarOpen
-          },
-          isSettingsPanelOpen: false,
-          isSearchBoxOpen: false,
-        }
-      }
-    </script>
-</div>
+   </div>
 </div>
 
