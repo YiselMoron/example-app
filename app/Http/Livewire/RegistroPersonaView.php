@@ -55,6 +55,11 @@ class RegistroPersonaView extends Component
             DB::commit();
         }
         catch(\Exception $e){
+            $this->dispatchBrowserEvent('alert',[
+                'type'=>'error',
+                'message'=>"Ocurrio un error. Vulve a intentarlo mas tarde!!"
+            ]);
+
             DB::rollBack();
         }
         $this->emit('refreshParent');
