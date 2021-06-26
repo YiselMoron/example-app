@@ -9,10 +9,12 @@ use App\Models\Rol;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class RegistroPersonaView extends Component
 {
 
+    //2
     public $VPnombreCompleto;
     public $VPcargo;
     public $VPdepartamento;
@@ -21,7 +23,7 @@ class RegistroPersonaView extends Component
     public $VPpassword;
     public $VProl;
 
-    public function save(){
+    public function save(){ //3 vacio 6 validacion
         $this->validate([
             'VPnombreCompleto'=> 'required',
             'VPcargo'=> 'required',
@@ -31,11 +33,12 @@ class RegistroPersonaView extends Component
             'VPpassword'=> 'required',
             'VProl'=> 'required',
         ]);
-
+//7
         $user = new User;
         $user->name = $this->VPnombreCompleto;
         $user->email = $this->VPemail;
-        $user->password = $this->VPpassword;
+         
+        $user->password = Hash::make($this->VPpassword);
         $user->idRol = $this->VProl;
         $user->save();
         $people = new Persona;
@@ -70,7 +73,7 @@ class RegistroPersonaView extends Component
         // }
     }
 
-    public function render()
+    public function render() //1
     {
         $cargos=Cargo::all();
         $departamentos=Departamento::all();

@@ -1,7 +1,7 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
       <!-- Loading screen -->
       <div
         x-ref="loading"
@@ -10,9 +10,6 @@
       >
         Loading.....
       </div>
-
-
-
         <!-- Sidebar footer -->
         <div class="flex-shrink-0 p-2 border-t max-h-14">
 
@@ -24,9 +21,29 @@
         <!-- Main content -->
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
             <div class="grid grid-cols-2">
-                <div class=" text-left"><h3 class="mt-6 text-xl">Equipos</h3> </div>
-                <div class=" ml-auto mt-3"><button class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">New</button>
+                <div class=" text-left"><h3 class="mt-6 text-xl">Lista de Equipo</h3> </div>
+                <div class=" ml-auto mt-3">
+                    <button onclick="document.getElementById('modal-create-rol').showModal()"
+                    class="px-6 py-2.5  mb-4  text-base
+                    font-semibold rounded-full block  bg-transparent border border-green-500
+                    text-green-500 hover:bg-green-700 hover:text-white
+                    hover:border-green-500 ">+</button>
                 </div>
+                  <!--LLAMAR A REGISTRO + -->
+            <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
+                <div class="flex flex-col w-full h-auto ">
+                     <!-- Header -->
+                     <div class="flex w-full h-auto justify-center items-center">
+                       <!--Header End-->
+                     </div>
+                       <!-- Modal Content-->
+                        <div>
+                            @livewire('registro-equipo')
+                        </div>
+                       <!-- End of Modal Content-->
+                     </div>
+             </dialog>
+
             </div>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -35,11 +52,14 @@
                   <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
                     <thead class="bg-gray-100 border-b-8 border-green-500">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Nombre</th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Stock</th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Marca</th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Tipo Equipo</th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Stock</th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider
+                         text-left text-gray-500 uppercase">Nombre</th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider
+                        text-left text-gray-500 uppercase">Marca</th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider
+                        text-left text-gray-500 uppercase">Tipo Equipo</th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider
+                        text-left text-gray-500 uppercase">Stock</th>
                     </tr>
                     </thead>
 
@@ -51,15 +71,14 @@
                                 <div class="text-sm font-medium text-gray-900">{{$item->nombre}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{$item->Stock}}</div>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{$item->idMarca}}</div>
+                                <div class="text-sm text-gray-900">{{$item->marca->nombre}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{$item->idTipoEquipo}}</div>
+                                <div class="text-sm text-gray-900">{{$item->tipoEquipo->nombre}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full">{{$item->Stock}}</span>
+                                <span class="inline-flex px-2 text-xs font-semibold leading-5
+                                 text-white bg-green-500 rounded-full">{{$item->Stock}}</span>
                             </td>
                         </tr>
                         @endforeach

@@ -39,29 +39,26 @@
                           scope="col"
                           class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
-                          Nombre
+                          Codigo
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        >
+                          Responsable
                         </th>
 
                         <th
                           scope="col"
                           class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
-                          Cant. Pedido
+                          Cargo
                         </th>
                         <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
                           Fecha Pedido
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
-                          Cant. Resivida
-                        </th>
-                        <th scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
-                          Fecha Llegada
-                        </th>
+
                         <th
                           scope="col"
                           class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
@@ -79,28 +76,23 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <tr class="transition-all hover:bg-gray-100 hover:shadow-lg text-center">
-                          <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap">
 
-                                <div class="text-sm font-medium text-gray-900">Laptop-Dell XPS 15</div>
+                                <div class="text-sm font-medium text-gray-900">0001 </div>
+                         </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
 
+                                <div class="text-sm font-medium text-gray-900">Yisel </div>
+                         </td>
+                         <td class="px-6 py-4 whitespace-nowrap">
 
-                          </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">5</div>
-
-                          </td>
+                            <div class="text-sm font-medium text-gray-900">admin </div>
+                     </td>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-gray-900">12/02/2021</div>
 
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">4</div>
 
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">28/02/2021</div>
-
-                          </td>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <span
                               class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full"
