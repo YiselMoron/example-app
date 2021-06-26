@@ -37,7 +37,7 @@ class RegistroPersonaView extends Component
         $user = new User;
         $user->name = $this->VPnombreCompleto;
         $user->email = $this->VPemail;
-         
+
         $user->password = Hash::make($this->VPpassword);
         $user->idRol = $this->VProl;
         $user->save();
@@ -71,6 +71,7 @@ class RegistroPersonaView extends Component
         //     DB::rollBack();
 
         // }
+        $this->emit('refreshParent');
     }
 
     public function render() //1
