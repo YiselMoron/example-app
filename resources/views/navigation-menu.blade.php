@@ -22,15 +22,13 @@
                         {{ __('Persona') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('Equipo') }}" :active="request()->routeIs('Equipo')">
-                        {{ __('Equipo') }}
+                        {{ __('Inventario') }}
                     </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{ route('Soporte') }}" :active="request()->routeIs('Soporte')">
-                        {{ __('Soporte') }}
-                    </x-jet-nav-link>
-
                     <x-jet-nav-link href="{{ route('SolicitudAlmacen') }}" :active="request()->routeIs('SolicitudAlmacen')">
-                        {{ __('Solicitud Almacen') }}
+                        {{ __('Almacen') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('Soporte') }}" :active="request()->routeIs('Soporte')">
+                        {{ __('Asistencia tecnica') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('PedidoEquipo') }}" :active="request()->routeIs('PedidoEquipo')">
                         {{ __('Solicitud Equipo') }}
@@ -102,7 +100,7 @@
                 </div>
             </div>
 
-            {{-- <!-- Hamburger -->
+            <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -110,7 +108,7 @@
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            </div> --}}
+            </div>
         </div>
     </div>
 
@@ -118,8 +116,27 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Inicio') }}
             </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('Persona') }}" :active="request()->routeIs('Persona')">
+                {{ __('Persona') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('Equipo') }}" :active="request()->routeIs('Equipo')">
+                {{ __('Inventario') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('SolicitudAlmacen') }}" :active="request()->routeIs('SolicitudAlmacen')">
+                {{ __('Almacen') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('Soporte') }}" :active="request()->routeIs('Soporte')">
+                {{ __('Asistencia tecnica') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('PedidoEquipo') }}" :active="request()->routeIs('PedidoEquipo')">
+                {{ __('Solicitud Equipo') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('AsignacionEquipo') }}" :active="request()->routeIs('AsignacionEquipo')">
+                {{ __('Asignacion Equipo') }}
+            </x-jet-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->
