@@ -23,7 +23,7 @@ class RegistroPersonaView extends Component
     public $VPpassword;
     public $VProl;
 
-    public function save(){ //3 vacio 6 validacion
+    public function save(){ //3 vacio
         $this->validate([
             'VPnombreCompleto'=> 'required',
             'VPcargo'=> 'required',
@@ -63,7 +63,7 @@ class RegistroPersonaView extends Component
             DB::rollBack();
         }
         $this->emit('refreshParent');
-    }
+      }
 
     public function render() //1
     {

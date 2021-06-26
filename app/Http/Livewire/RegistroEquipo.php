@@ -24,22 +24,29 @@ class RegistroEquipo extends Component
             'VEtipoEquipo'=> 'required',
 
         ]);
-        $busqueda = Equipo::where('nombre', $this->VEnombre)->first();
-        if($busqueda){
-            $contar = ($busqueda->Stock+$this->VEstock);
-            $equipo = Equipo::find($busqueda->id);
-            $equipo->Stock = $contar;
-            $equipo->save();
-        }else{
-            $equipo = new Equipo;
-            $equipo->nombre = $this->VEnombre;
-            $equipo->Stock = $this->VEstock;
-            $equipo->idMarca = $this->VEmarca;
-            $equipo->idTipoEquipo = $this->VEtipoEquipo;
-            $equipo->save();
+        DB::beginTransaction();
+        try{
+                $busqueda = Equipo::where('nombre', $this->VEnombre)->first();
+                if($busqueda){
+                    $contar = ($busqueda->Stock+$this->VEstock);
+                    $equipo = Equipo::find($busqueda->id);
+                    $equipo->Stock = $contar;
+                    $equipo->save();
+                }else{
+                    $equipo = new Equipo;
+                    $equipo->nombre = $this->VEnombre;
+                    $equipo->Stock = $this->VEstock;
+                    $equipo->idMarca = $this->VEmarca;
+                    $equipo->idTipoEquipo = $this->VEtipoEquipo;
+                    $equipo->save();
+                }
+                DB::commit();
+            }
+            catch(\Exception $e){
+            DB::rollBack();
         }
-
-    }
+        $this->emit('refreshParent');
+     }
 
     public function render()
     {
