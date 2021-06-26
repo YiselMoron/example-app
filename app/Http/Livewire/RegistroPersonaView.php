@@ -9,6 +9,7 @@ use App\Models\Rol;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class RegistroPersonaView extends Component
 {
@@ -36,7 +37,8 @@ class RegistroPersonaView extends Component
         $user = new User;
         $user->name = $this->VPnombreCompleto;
         $user->email = $this->VPemail;
-        $user->password = $this->VPpassword;
+         
+        $user->password = Hash::make($this->VPpassword);
         $user->idRol = $this->VProl;
         $user->save();
         $people = new Persona;

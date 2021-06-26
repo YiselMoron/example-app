@@ -1,7 +1,7 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
       <!-- Loading screen -->
       <div
         x-ref="loading"
@@ -10,9 +10,6 @@
       >
         Loading.....
       </div>
-
-
-
         <!-- Sidebar footer -->
         <div class="flex-shrink-0 p-2 border-t max-h-14">
 
@@ -26,12 +23,27 @@
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Lista de Equipo</h3> </div>
                 <div class=" ml-auto mt-3">
-                    <button onclick="document.getElementById('registro-equipo').showModal()"
+                    <button onclick="document.getElementById('modal-create-rol').showModal()"
                     class="px-6 py-2.5  mb-4  text-base
                     font-semibold rounded-full block  bg-transparent border border-green-500
                     text-green-500 hover:bg-green-700 hover:text-white
                     hover:border-green-500 ">+</button>
                 </div>
+                  <!--LLAMAR A REGISTRO + -->
+            <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
+                <div class="flex flex-col w-full h-auto ">
+                     <!-- Header -->
+                     <div class="flex w-full h-auto justify-center items-center">
+                       <!--Header End-->
+                     </div>
+                       <!-- Modal Content-->
+                        <div>
+                            @livewire('registro-equipo')
+                        </div>
+                       <!-- End of Modal Content-->
+                     </div>
+             </dialog>
+
             </div>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

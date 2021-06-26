@@ -1,7 +1,7 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
       <!-- Loading screen -->
       <div
         x-ref="loading"
@@ -19,10 +19,10 @@
         </div>
       </aside>
 
-      <div class="flex flex-col flex-1 h-full overflow-hidden">
+      <div class="flex flex-col flex-1 overflow-hidden">
 
         <!-- Main content -->
-        <main class="flex-1 max-h-full p-5 overflow-hidden ">
+        <main class="flex-1 p-5 overflow-hidden ">
 
          <div class="grid grid-cols-2">
              <div class=" text-left"><h3 class="mt-6 text-xl">Personal Administrativo</h3> </div>
@@ -33,7 +33,7 @@
                    hover:bg-green-700 hover:text-white hover:border-green-500 "
                    >Registrar</button>
              </div>
-
+            <!--LLAMAR A REGISTRO + -->
             <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
                 <div class="flex flex-col w-full h-auto ">
                      <!-- Header -->
