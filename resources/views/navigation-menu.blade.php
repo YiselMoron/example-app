@@ -28,11 +28,7 @@
                         {{ __('Almacen') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('Soporte') }}" :active="request()->routeIs('Soporte')">
-<<<<<<< Updated upstream
-                        {{ __('Asistencia tecnica') }}
-=======
                         {{ __('Asistencia Tecnica') }}
->>>>>>> Stashed changes
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('PedidoEquipo') }}" :active="request()->routeIs('PedidoEquipo')">
                         {{ __('Solicitud Equipo') }}
@@ -121,27 +117,6 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Inicio') }}
-<<<<<<< Updated upstream
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('Persona') }}" :active="request()->routeIs('Persona')">
-                {{ __('Persona') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('Equipo') }}" :active="request()->routeIs('Equipo')">
-                {{ __('Inventario') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('SolicitudAlmacen') }}" :active="request()->routeIs('SolicitudAlmacen')">
-                {{ __('Almacen') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('Soporte') }}" :active="request()->routeIs('Soporte')">
-                {{ __('Asistencia tecnica') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('PedidoEquipo') }}" :active="request()->routeIs('PedidoEquipo')">
-                {{ __('Solicitud Equipo') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('AsignacionEquipo') }}" :active="request()->routeIs('AsignacionEquipo')">
-                {{ __('Asignacion Equipo') }}
-            </x-jet-responsive-nav-link>
-=======
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('Persona') }}" :active="request()->routeIs('Persona')">
                 {{ __('Persona') }}
@@ -161,7 +136,6 @@
             <x-jet-responsive-nav-link href="{{ route('AsignacionEquipo') }}" :active="request()->routeIs('AsignacionEquipo')">
                 {{ __('Asignacion Equipo') }}
             </x-jet-responsive-nav-link>
->>>>>>> Stashed changes
             
         </div>
 
