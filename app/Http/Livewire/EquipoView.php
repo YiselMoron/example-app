@@ -7,6 +7,16 @@ use Livewire\Component;
 
 class EquipoView extends Component
 {
+    public $prompt;
+
+    protected $listeners = [
+        'refreshParent'
+    ];
+
+    public function refreshParent(){
+        $this->prompt = " ";
+    }
+    
     public function render()
     {
         $equipos = Equipo::all();

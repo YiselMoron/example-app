@@ -2,8 +2,8 @@
     <!-- component -->
 <div class="pt-3">
     <div class="flex bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
-     
-     
+
+
       <div class="flex flex-col flex-1 h-full overflow-hidden">
 
         <!-- Main content -->
@@ -11,7 +11,7 @@
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Inventario</h3> </div>
                 <div class=" ml-auto mt-3">
-                    <button onclick="document.getElementById('modal-create-rol').showModal()"
+                    <button onclick="clearFunction()"
                     class="px-6 py-2.5  mb-4  text-base
                     font-semibold rounded-full block  bg-transparent border border-green-500
                     text-green-500 hover:bg-green-700 hover:text-white
@@ -77,6 +77,12 @@
 
       </div>
     </div>
+    <script>
+        function clearFunction() {
+                document.getElementById('modal-create-rol').showModal();
+                document.getElementById("form-equipo").reset();
+            }
+    </script>
    </div>
 </div>
 

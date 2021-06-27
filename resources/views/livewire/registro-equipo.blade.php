@@ -1,6 +1,6 @@
 <div class="flex items-center justify-center ">
     {{-- 4 form--}}
-    <form wire:submit.prevent="save">
+    <form wire:submit.prevent="save" id="form-equipo">
         <div class="grid border-2 border-green-300 border-opacity-50 bg-white m-2 rounded-md shadow-2xl ">
 
           <div class="flex justify-center" >
@@ -24,7 +24,7 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Marca</label>
                 <select name="VEmarca" id="VEmarca" wire:model="VEmarca"
                 class="py-2 px-10 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
-                <option value=" ">Seleccionar</option>    
+                <option value=" ">Seleccionar</option>
                 @foreach ($marcas as $marca)
                     <option value="{{$marca->id}}">{{$marca->nombre}}</option>
 
@@ -38,7 +38,7 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Tipo Equipo</label>
                 <select name="VEtipoEquipo" id="VEtipoEquipo" wire:model="VEtipoEquipo"
                  class="py-2 px-5 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
-                 <option value=" ">Seleccionar</option>               
+                 <option value=" ">Seleccionar</option>
                             {{-- RENDER      VARIABLE EXTRA --}}
                     @foreach ($tipoEquipos as $tipoequipo)
                     <option value="{{$tipoequipo->id}}">{{$tipoequipo->nombre}}</option>
