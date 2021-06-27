@@ -16,6 +16,12 @@ class PersonaView extends Component
     public function refreshParent(){
         $this->prompt = " ";
     }
+
+    public function selectItem($id){
+        $this->emit('getDataId', $id);
+        $this->dispatchBrowserEvent('openModalEdit');
+    }
+
     public function render()
     {
         $personas = Persona::all();

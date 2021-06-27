@@ -10,7 +10,7 @@
                             <h3 class="mt-6 text-xl" >Personal Administrativo</h3>
                         </div>
                         <div class=" ml-auto mt-3">
-                            <button onclick="document.getElementById('modal-create-rol').showModal()" class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">Registrar</button>
+                            <button onclick="clearFunction()" class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">Registrar</button>
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
                                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">{{ $item->celular }}</td>
 
                                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                  <a wire:click="selectItem({{ $item->id }})" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -90,7 +90,16 @@
 
         </div>
 
-        
+        <script>
+            function clearFunction() {
+                document.getElementById('modal-create-rol').showModal();
+                document.getElementById("form-persona").reset();
+            }
+
+            window.addEventListener('openModalEdit', event =>{
+                document.getElementById('modal-create-rol').showModal()
+            })
+        </script>
 
     </div>
 </div>

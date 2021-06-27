@@ -1,5 +1,5 @@
 <div class="flex bg-white rounded-lg shadow-2xl  items-center justify-center ">
-    <form wire:submit.prevent="save">
+    <form wire:submit.prevent="save" autocomplete="off" id="form-persona">
         <div>
             <div class="flex justify-center" >
                 <div class="flex">
@@ -50,7 +50,7 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
                   <div class="grid grid-cols-1">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Celular</label>
-                    <input name="VPcelular" id="VPcelular" wire:model="VPcelular"
+                    <input type="number" name="VPcelular" id="VPcelular" wire:model="VPcelular"
                      class="py-1 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" />
                      @if($errors->has('VPcelular'))
                         <p>{{$errors->first('VPcelular')}}</p>
@@ -93,15 +93,11 @@
                  @endif
               </div>
 
-
-
-
               <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-                <button onclick="document.getElementById('modal-create-rol').close()" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
-                <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
+                <button type="button" onclick="document.getElementById('modal-create-rol').close()" wire:click="cancelar" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
+                <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
               </div>
         </div>
     </form>
 
-    
 </div>

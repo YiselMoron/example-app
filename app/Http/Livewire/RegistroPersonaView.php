@@ -22,6 +22,30 @@ class RegistroPersonaView extends Component
     public $VPemail;
     public $VPpassword;
     public $VProl;
+    public $estadoEdit;
+    public $id_edit;
+
+    protected $listeners = [
+        'getDataId'
+    ];
+
+    public function getDataId($modelId){
+        $this->id_edit = $modelId;
+        $people = Persona::find($this->id_edit);
+        $this->VPnombreCompleto = $people->nombreCompleto ;
+        $this->VPcelular = $people->celular ;
+        $this->VProl = $people->user->idRol ;
+
+        $this->VPcargo = $people->idCargo ;
+        $this->VPdepartamento = $people->idDepartamento ;
+
+        $this->VPemail = $people->user->email ;
+        $this->VPpassword = '*********' ;
+    }
+
+    public function cancelar(){
+        $this->id_edit = null;
+    }
 
     public function save(){ //3 vacio
         $this->validate([
@@ -37,20 +61,42 @@ class RegistroPersonaView extends Component
 
         DB::beginTransaction();
         try{
-            $user = new User;
-            $user->name = $this->VPnombreCompleto;
-            $user->email = $this->VPemail;
+            if($this->id_edit){
+                $people = Persona::find($this->id_edit);
+                $people->nombreCompleto = $this->VPnombreCompleto;
+                $people->celular = $this->VPcelular;
+                $people->idDepartamento = $this->VPdepartamento;
+                $people->idCargo = $this->VPcargo;
+                $people->save();
+                $userId = $people->idUser;
 
-            $user->password = Hash::make($this->VPpassword);
-            $user->idRol = $this->VProl;
-            $user->save();
-            $people = new Persona;
-            $people->nombreCompleto = $this->VPnombreCompleto;
-            $people->celular = $this->VPcelular;
-            $people->idDepartamento = $this->VPdepartamento;
-            $people->idCargo = $this->VPcargo;
-            $people->idUser = $user->id;
-            $people->save();
+                $user = User::find($userId);
+                $user->name = $this->VPnombreCompleto;
+                $user->email = $this->VPemail;
+                $user->idRol = $this->VProl;
+                $user->save();
+
+                if($this->VPpassword != '*********'){
+                    $user = User::find($userId);
+                    $user->password = Hash::make($this->VPpassword);
+                    $user->save();
+                }
+
+            }else{
+                $user = new User;
+                $user->name = $this->VPnombreCompleto;
+                $user->email = $this->VPemail;
+                $user->password = Hash::make($this->VPpassword);
+                $user->idRol = $this->VProl;
+                $user->save();
+                $people = new Persona;
+                $people->nombreCompleto = $this->VPnombreCompleto;
+                $people->celular = $this->VPcelular;
+                $people->idDepartamento = $this->VPdepartamento;
+                $people->idCargo = $this->VPcargo;
+                $people->idUser = $user->id;
+                $people->save();
+            }
 
             DB::commit();
         }
@@ -63,7 +109,9 @@ class RegistroPersonaView extends Component
             DB::rollBack();
         }
         $this->emit('refreshParent');
-      }
+    }
+
+
 
     public function render() //1
     {
