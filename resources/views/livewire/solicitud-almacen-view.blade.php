@@ -30,8 +30,8 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <div class="overflow-hidden border-b border-gray-500 rounded-md shadow-md">
-                <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
-                    <thead class="bg-gray-100 border-b-8 border-green-500">
+                <table class="min-w-full overflow-x-scroll md-4">
+                    <thead class="bg-gray-100 border-b-8 border-green-500 ">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider
                              text-left text-gray-500 uppercase">Codigo</th>
