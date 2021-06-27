@@ -53,8 +53,8 @@
 
           <div class="grid grid-cols-1 mt-5 mx-7">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Stock</label>
-            <input name="VEstock" id="VEstock" wire:model="VEstock"
-             class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" />
+            <input type="number" name="VEstock" id="VEstock" wire:model="VEstock"
+             class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" />
              @if($errors->has('VEstock'))
                 <p>{{$errors->first('VEstock')}}</p>
              @endif
@@ -65,7 +65,7 @@
 
           <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
             <button type="button" onclick="document.getElementById('modal-create-rol').close()" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
-            <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Agregar</button>
+            <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
           </div>
 
         </div>
