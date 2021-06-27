@@ -16,7 +16,7 @@
                     hover:border-green-500 ">+</button></div>
             </div>
 
-            <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
+            {{-- <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
                 <div class="flex flex-col w-full h-auto ">
                      <div class="flex w-full h-auto justify-center items-center">
                      </div>
@@ -24,7 +24,7 @@
                             @livewire('registro-almacen')
                         </div>
                      </div>
-             </dialog>
+             </dialog> --}}
 
             <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
