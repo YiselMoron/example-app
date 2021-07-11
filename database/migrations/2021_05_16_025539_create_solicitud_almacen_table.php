@@ -16,9 +16,9 @@ class CreateSolicitudAlmacenTable extends Migration
         Schema::create('solicitudAlmacen', function (Blueprint $table) {
             $table->id();
             $table->integer('cantidadPedido');
-            $table->integer('cantidadRecibido');
+            $table->integer('cantidadRecibido')->nullable();
             $table->date('fechaPedido');
-            $table->date('fechaRecibido');
+            $table->date('fechaRecibido')->nullable();
             $table->string('descripcion');
             $table->boolean('estado');
             $table->unsignedBigInteger('idPedidoEquipo');

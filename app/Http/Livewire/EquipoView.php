@@ -16,7 +16,7 @@ class EquipoView extends Component
     public function refreshParent(){
         $this->prompt = " ";
     }
-    
+
     public function render()
     {
         $equipos = Equipo::all();

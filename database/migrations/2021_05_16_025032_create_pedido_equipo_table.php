@@ -16,7 +16,7 @@ class CreatePedidoEquipoTable extends Migration
         Schema::create('pedidoEquipo', function (Blueprint $table) {
             $table->id();
             $table->date('fechaPedido');
-            $table->integer('numeroAlmacen');
+            $table->integer('numeroAlmacen')->nullable();
             $table->unsignedBigInteger('idPersona');
             $table->foreign('idPersona')->references('id')->on('persona');
             $table->timestamps();

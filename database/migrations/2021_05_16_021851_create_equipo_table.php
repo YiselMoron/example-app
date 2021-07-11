@@ -17,9 +17,9 @@ class CreateEquipoTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->integer('Stock');
-            $table->unsignedBigInteger('idMarca');
+            $table->unsignedBigInteger('idMarca')->nullable();
             $table->foreign('idMarca')->references('id')->on('marca');
-            $table->unsignedBigInteger('idTipoEquipo');
+            $table->unsignedBigInteger('idTipoEquipo')->nullable();
 
             $table->foreign('idTipoEquipo')->references('id')->on('tipoEquipo');
             $table->timestamps();

@@ -55,10 +55,17 @@
                                 <div class="text-sm font-medium text-gray-900">{{$item->nombre}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{$item->marca->nombre}}</div>
+                                <div class="text-sm text-gray-900">@if ($item->idMarca)
+                                        {{$item->marca->nombre}}
+                                    @endif
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{$item->tipoEquipo->nombre}}</div>
+                                <div class="text-sm text-gray-900">
+                                    @if ($item->idTipoEquipo)
+                                    {{$item->tipoEquipo->nombre}}
+                                    @endif
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="inline-flex px-2 text-xs font-semibold leading-5
@@ -85,4 +92,3 @@
     </script>
    </div>
 </div>
-

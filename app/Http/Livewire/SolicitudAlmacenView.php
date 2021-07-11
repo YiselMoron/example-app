@@ -17,11 +17,11 @@ class SolicitudAlmacenView extends Component
     public function refreshParent(){
         $this->prompt = " ";
     }
-    
+
     public function render()
     {
-        
-         $almacenes= SolicitudAlmacen::all();
+
+        $almacenes= SolicitudAlmacen::all();
         return view('livewire.solicitud-almacen-view',compact('almacenes'));
     }
 }

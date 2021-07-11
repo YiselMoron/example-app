@@ -18,11 +18,11 @@ class CreatePersonaTable extends Migration
             $table->string('nombreCompleto');
             $table->integer('celular');
             $table->unsignedBigInteger('idUser');
-            $table->foreign('idUser')->references('id')->on('users');
             $table->unsignedBigInteger('idCargo');
-            $table->foreign('idCargo')->references('id')->on('cargo');
             $table->unsignedBigInteger('idDepartamento');
             $table->foreign('idDepartamento')->references('id')->on('departamento');
+            $table->foreign('idCargo')->references('id')->on('cargo');
+            $table->foreign('idUser')->references('id')->on('users');
             $table->timestamps();
         });
     }
