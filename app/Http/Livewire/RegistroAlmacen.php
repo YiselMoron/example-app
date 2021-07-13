@@ -63,6 +63,11 @@ class RegistroAlmacen extends Component
         }catch(\Exception $e){
             DB::rollBack();
         }
+        $this->VEnombre = null;
+        $this->VAcantidadP = 1;
+        $this->VAdescripcion = null;
+        $this->VEid = null;
+        $this->lista = [];
         $this->emit('refreshParent');
 
     }

@@ -104,7 +104,7 @@ rounded-md shadow-2xl">
 
         <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
             <button type="button" onclick="document.getElementById('modal-create-rol').close()" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
-            <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Agregar</button>
+            <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
         </div>
     </form>
 </div>

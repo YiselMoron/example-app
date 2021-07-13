@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\PedidoEquipo;
 use App\Models\SolicitudAlmacen;
 use Livewire\Component;
 
@@ -9,6 +10,7 @@ use Livewire\Component;
 class SolicitudAlmacenView extends Component
 {
     public $prompt;
+    public $detalles;
 
     protected $listeners = [
         'refreshParent'
@@ -18,10 +20,15 @@ class SolicitudAlmacenView extends Component
         $this->prompt = " ";
     }
 
+    public function detalle_pedido( $id ){
+        $this->detalles = PedidoEquipo::where('id', $id)->first();
+        $this->dispatchBrowserEvent('openModal');
+    }
+
     public function render()
     {
 
-        $almacenes= SolicitudAlmacen::all();
+        $almacenes= PedidoEquipo::all();
         return view('livewire.solicitud-almacen-view',compact('almacenes'));
     }
 }
