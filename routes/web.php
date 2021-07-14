@@ -8,6 +8,7 @@ use App\Http\Livewire\SolicitudView;
 use App\Http\Livewire\EquipoView;
 use App\Http\Livewire\AsignacionEquipoView;
 use App\Http\Livewire\SolicitudAlmacenView;
+use App\Http\Livewire\AlmacenAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/Equipo', EquipoView::class)->name('Equipo');
     Route::get('/AsignacionEquipo', AsignacionEquipoView::class)->name('AsignacionEquipo');
     Route::get('/SolicitudAlmacen', SolicitudAlmacenView::class)->name('SolicitudAlmacen');
-
+    Route::get('/Almacen', AlmacenAdmin::class)->name('Almacen');
 });
 
