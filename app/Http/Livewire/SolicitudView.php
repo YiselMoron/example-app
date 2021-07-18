@@ -24,7 +24,7 @@ class SolicitudView extends Component
 
     public function render()
     {
-        $asistencias = AsistenciaTecnica::where('idPersona', Auth::user()->id)->get();
+        $asistencias = AsistenciaTecnica::where('idSoporte', Auth::user()->id)->get();
         return view('livewire.solicitud-view', compact('asistencias'));
     }
 

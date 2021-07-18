@@ -24,7 +24,7 @@ class SolicitudEquipoView extends Component
     
     public function render()
     {
-        $SolicitudEquipos=SolicitudEquipo::where('idPersona', Auth::user()->id)->get();
+        $SolicitudEquipos=SolicitudEquipo::where('idSoporte', Auth::user()->id)->get();
         return view('livewire.solicitud-equipo-view',compact('SolicitudEquipos'));
     }
 }

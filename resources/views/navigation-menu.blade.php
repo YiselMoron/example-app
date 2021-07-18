@@ -15,7 +15,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+
+                    @can('soporte')
+                    <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
                         {{ __('Inicio') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('Persona') }}" :active="request()->routeIs('Persona')">
@@ -36,12 +38,17 @@
                     <x-jet-nav-link href="{{ route('AsignacionEquipo') }}" :active="request()->routeIs('AsignacionEquipo')">
                         {{ __('Asignacion Equipo') }}
                     </x-jet-nav-link>
+                    @endcan
+                    @can('almacen')
                     <x-jet-nav-link href="{{ route('Almacen') }}" :active="request()->routeIs('Almacen')">
                         {{ __('Almacen adm') }}
                     </x-jet-nav-link>
+                    @endcan
+                    @can('general')
                     <x-jet-nav-link href="{{ route('Administracion') }}" :active="request()->routeIs('Administracion')">
                         {{ __('Administracion') }}
                     </x-jet-nav-link>
+                    @endcan
                 </div>
 
             </div>
@@ -121,7 +128,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+
+            <x-jet-responsive-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
                 {{ __('Inicio') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('Persona') }}" :active="request()->routeIs('Persona')">

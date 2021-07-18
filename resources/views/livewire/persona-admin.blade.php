@@ -9,10 +9,14 @@
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">PANEL DE ADMINISTRACION</h3> </div>
                 <div class=" ml-auto mt-3">
-                    <div class="grid grid-cols-2">
+                    <div class="grid grid-cols-2 ">
+                        
                         <div class="mx-2">
+                            @can('administrador')
                             <button onclick="clearFunction('equipo')" class="px-6 py-2.5  mb-4  text-base font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">Nuevo equipo</button>
+                            @endcan
                         </div>
+                        
                         <div class="mx-2">
                             <button onclick="clearFunction('asistencia')" class="px-6 py-2.5  mb-4  text-base font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">Solicitud de asistencia</button>
                         </div>
