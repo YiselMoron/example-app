@@ -30,7 +30,7 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+/* Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', IndexView::class)->name('dashboard');
     Route::get('/Persona', PersonaView::class)->name('Persona');
     Route::get('/PedidoEquipo', SolicitudEquipoView::class)->name('PedidoEquipo');
@@ -40,5 +40,26 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/SolicitudAlmacen', SolicitudAlmacenView::class)->name('SolicitudAlmacen');
     Route::get('/Almacen', AlmacenAdmin::class)->name('Almacen');
     Route::get('/Administracion', PersonaAdmin::class)->name('Administracion');
+});
+ */
+Route::get('dashboard', function () {
+    return view('dashboard');
+})->name('dashboard')->middleware('auth');
+
+Route::get('/Administracion', PersonaAdmin::class)->name('Administracion')->middleware(['general']);
+
+Route::middleware('almacen')->group(function () {
+    
+    Route::get('/Almacen', AlmacenAdmin::class)->name('Almacen');
+});
+
+Route::middleware('soporte')->group(function () {
+    Route::get('/index', IndexView::class)->name('index');
+    Route::get('/Persona', PersonaView::class)->name('Persona');
+    Route::get('/PedidoEquipo', SolicitudEquipoView::class)->name('PedidoEquipo');
+    Route::get('/Soporte', SolicitudView::class)->name('Soporte');
+    Route::get('/Equipo', EquipoView::class)->name('Equipo');
+    Route::get('/AsignacionEquipo', AsignacionEquipoView::class)->name('AsignacionEquipo');
+    Route::get('/SolicitudAlmacen', SolicitudAlmacenView::class)->name('SolicitudAlmacen');
 });
 

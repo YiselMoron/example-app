@@ -17,7 +17,11 @@ class RolSeeder extends Seeder
         [
             'nombre' => 'Administrador'
         ], [
-            'nombre' => 'Auxiliar'
+            'nombre' => 'Soporte'
+        ],[
+            'nombre' => 'Almacen'
+        ], [
+            'nombre' => 'General'
         ]
     ]);
     }
