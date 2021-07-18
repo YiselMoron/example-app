@@ -1,12 +1,8 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex h-screen overflow-y-hidden bg-white" >
              <!-- Sidebar footer -->
-        <div class="flex-shrink-0 p-2 border-t max-h-14">
-
-        </div>
-      </aside>
 
       <div class="flex flex-col flex-1 h-full overflow-hidden">
 
@@ -14,13 +10,13 @@
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Solicitud Equipo</h3> </div>
-                <div class=" ml-auto mt-3">
-                    <button class="px-6 py-2.5  mb-4  text-base   
-                    font-semibold rounded-full block  bg-transparent border 
-                    border-green-500  text-green-500 hover:bg-green-700
-                     hover:text-white hover:border-green-500 "
-                     >+</button>
-                </div>
+                <dialog id="modal-solicitud-equipo" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md mt-0">
+                    <div class="flex flex-col w-full h-auto ">
+                        <div>
+                            @livewire('registro-solicitud-equipo')
+                        </div>
+                    </div>
+                </dialog>
             </div>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -29,34 +25,22 @@
                   <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
                     <thead class="bg-gray-100 border-b-8 border-green-500">
                       <tr>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider  text-gray-500 uppercase" >
                           Codigo
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase" >
                           Responsable
                         </th>
 
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
-                          Cargo
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase" >
+                          Area
                         </th>
                         <th scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase">
                           Fecha Pedido
                         </th>
 
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase" >
                           Estado
                         </th>
 
@@ -69,37 +53,50 @@
 
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach ($SolicitudEquipos as $equipo)
                         <tr class="transition-all hover:bg-gray-100 hover:shadow-lg text-center">
                             <td class="px-6 py-4 whitespace-nowrap">
-
-                                <div class="text-sm font-medium text-gray-900">0001 </div>
-                         </td>
+                                00{{ $equipo->id}}
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-
-                                <div class="text-sm font-medium text-gray-900">Yisel </div>
-                         </td>
+                                <div class="text-sm font-medium text-gray-900">{{ $equipo->persona->nombreCompleto }}</div>
+                                <div class="text-sm text-gray-500">{{ $equipo->persona->user->email }}</div>
+                            </td>
                          <td class="px-6 py-4 whitespace-nowrap">
 
-                            <div class="text-sm font-medium text-gray-900">admin </div>
-                     </td>
+                            <div class="text-sm font-medium text-gray-900">{{ $equipo->persona->departamento->nombre }} </div>
+                        </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">12/02/2021</div>
-
+                            <div class="text-sm text-gray-900">{{ date("d/m/Y", strtotime($equipo->fechaSolicitud))}}</div>
                           </td>
 
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full"
-                            >
-                              Incompleto
-                            </span>
+                            @switch($equipo->estado)
+                                @case(1)
+                                      <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full">
+                                          P
+                                      </span>
+                                    @break
+                                @case(2)
+                                      <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-blue-500 rounded-full">
+                                          A
+                                      </span>
+                                    @break
+                                @case(3)
+                                      <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full">
+                                          D
+                                      </span>
+                                    @break
+                                @default
+                                  
+                            @endswitch
 
                           </td>
                             <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Ver/</a>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                            <a wire:click="selectItem({{ $equipo->id }})" class="text-indigo-600 hover:text-indigo-900">VER</a>
                           </td>
                         </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -111,6 +108,11 @@
 
       </div>
     </div>
+    <script>
+        window.addEventListener('openModal', event =>{
+            document.getElementById('modal-solicitud-equipo').showModal()
+        })
+    </script>
 </div>
 </div>
 

@@ -1,37 +1,23 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex h-screen overflow-y-hidden bg-white" >
       <!-- Loading screen -->
-      <div
-        x-ref="loading"
-        class="fixed inset-0 z-50 flex items-center justify-center text-black "
-        style="backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)"
-      >
-        Loading.....
-      </div>
 
-
-
-        <!-- Sidebar footer -->
-        <div class="flex-shrink-0 p-2 border-t max-h-14">
-
-        </div>
-      </aside>
 
       <div class="flex flex-col flex-1 h-full overflow-hidden">
 
         <!-- Main content -->
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
+            <dialog id="modal-solucion" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md mt-0">
+                <div class="flex flex-col w-full h-auto ">
+                    <div >
+                        @livewire('registro-soporte')
+                    </div>
+                </div>
+            </dialog>
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Solicitud</h3> </div>
-                <div class=" ml-auto mt-3">
-                    <button onclick="document.getElementById('modal-create-rol').showModal()"
-                 class="px-6 py-2.5  mb-4  text-base   font-semibold rounded-full block
-                 bg-transparent border border-green-500  text-green-500
-                  hover:bg-green-700 hover:text-white hover:border-green-500 "
-                  >Registrar</button>
-                </div>
             </div>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -40,68 +26,87 @@
                   <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
                     <thead class="bg-gray-100 border-b-8 border-green-500">
                       <tr>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
                           Nombre
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
-                          Tipo Solicitud
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
+                          Solicitud
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
+                            Solución
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
                           Estado
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
                           Area
                         </th>
                         <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
-                          Fecha Completado
+                          Fecha Solicitud
                         </th>
                         <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
                           accion
                         </th>
-
                       </tr>
 
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 ">
+                        @foreach ($asistencias as $asistencia)
                         <tr class="transition-all hover:bg-gray-100 hover:shadow-lg">
                           <td class="px-6 py-4 whitespace-nowrap">
-
-                                <div class="text-sm font-medium text-gray-900">Yisel Moron F</div>
-                                <div class="text-sm text-gray-500">ymoronflores@gmail.com</div>
-
-
+                            <div class="text-sm font-medium text-gray-900">{{ $asistencia->persona->nombreCompleto }}</div>
+                            <div class="text-sm text-gray-500">{{ $asistencia->persona->user->email }}</div>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Soporte/Mantenimiento/Equipo</div>
+                            <div class="text-sm font-medium text-gray-900">{{ $asistencia->problema }}</div>
+                            <div class="text-sm text-gray-500">
+                                @if ($asistencia->mantenimiento)
+                                    Mantenimiento
+                                @elseif ($asistencia->soporte)
+                                    Soporte
+                                @else
+                                    diagnostico pendiente
+                                @endif
+                            </div>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full"
-                            >
-                              Completado
-                            </span>
-
+                            {{ $asistencia->solucion }}
                           </td>
-                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">Administracion</td>
-                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap text-center">09/04/2021</td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            
+                              @switch($asistencia->estado)
+                                  @case(1)
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full">
+                                            P
+                                        </span>
+                                      @break
+                                  @case(2)
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full">
+                                            F
+                                        </span>
+                                      @break
+                                  @default
+                                      
+                              @endswitch
+                          </td>
+                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $asistencia->persona->departamento->nombre }}</td>
+                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap text-right">{{ date("d/m/Y", strtotime($asistencia->created_at)) }}</td>
                           <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Ver</a>
+                            @if ($asistencia->mantenimiento || $asistencia->soporte)
+                                @if ($asistencia->mantenimiento)
+                                    <a wire:click="finalizar({{ $asistencia->mantenimiento->id }}, {{ $asistencia->id }}, 'mantenimiento')" class="text-indigo-600 hover:text-indigo-900">Finalizar</a>
+                                @elseif ($asistencia->soporte)
+                                    <a wire:click="finalizar({{ $asistencia->soporte->id }}, {{ $asistencia->id }}, 'soporte')" class="text-indigo-600 hover:text-indigo-900">Finalizar</a>
+                                @endif
+                            @else
+                                <a wire:click="diagnostico({{ $asistencia->id }}, 'soporte')" class="text-indigo-600 hover:text-indigo-900">Soporte</a> / 
+                                <a wire:click="diagnostico({{ $asistencia->id }}, 'mantenimiento')" class="text-indigo-600 hover:text-indigo-900">Mantenimiento</a>
+                            @endif
                           </td>
                         </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -113,19 +118,10 @@
 
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
     <script>
-      const setup = () => {
-        return {
-          loading: true,
-          isSidebarOpen: false,
-          toggleSidbarMenu() {
-            this.isSidebarOpen = !this.isSidebarOpen
-          },
-          isSettingsPanelOpen: false,
-          isSearchBoxOpen: false,
-        }
-      }
+        window.addEventListener('openModal', event =>{
+                document.getElementById('modal-solucion').showModal()
+            })
     </script>
 </div>
 </div>

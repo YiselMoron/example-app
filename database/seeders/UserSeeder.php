@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         $persona->celular = 77777777;
         $persona->idUser = $user->id;
         $persona->idCargo = 1;
-        $persona->idDepartamento = 1;
+        $persona->idDepartamento = 2;
         $persona->save();
 
     }

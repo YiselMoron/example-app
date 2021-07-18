@@ -1,5 +1,60 @@
-<div class="flex bg-green-200 items-center justify-center ">
-    {{-- 4 form--}}
+<div class="p-4 m-2 border-green-300 border-opacity-50 bg-white rounded-md shadow-2xl">
+
+    <form wire:submit.prevent="save">
+        <div class="flex justify-center pb-3" >
+            <div class="flex">
+                <h1 class="text-gray-600 mt-4 font-bold md:text-2xl
+                text-xl">Asistencia Técnica</h1>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4">
+            <div x-data="app()" x-cloak>
+                
+                <div class="flex-1">
+                    <textarea x-model="mensajeText"  name="VAsolucion" id="VAsolucion" wire:model="VAsolucion"
+                      class="mb-2 bg-gray-200 focus:outline-none focus:shadow-outline focus:bg-white border border-transparent rounded-lg py-2 px-4 block w-full appearance-none leading-normal placeholder-gray-700" 
+                      :class="{'border border-red-500': tweetIsOutOfRange() && mensajeText.length != 0 }"
+                      rows="3"
+                      placeholder="Solución..." maxlength="200"></textarea>
+                      
+                      <div class="flex justify-between items-center">
+
+                        <div>
+                          <span :class="{ 'text-red-600': charactersRemaining() <= 20 && charactersRemaining() > 10, 'text-red-400': charactersRemaining() <= 10 }" class="mr-3 text-sm text-gray-600" x-text="charactersRemaining()"></span>
+                        </div>
+                      </div>
+                </div>
+                <script>
+                    const MAX_TWEET_LENGTH = 200;
+                
+                    function app() {
+                      return {
+                        mensajeText: '',
+                
+                        charactersRemaining() {
+                          return MAX_TWEET_LENGTH - this.mensajeText.length;
+                        },
+                
+                        tweetIsOutOfRange() {
+                          return (MAX_TWEET_LENGTH - this.mensajeText.length) == MAX_TWEET_LENGTH || (MAX_TWEET_LENGTH - this.mensajeText.length) < 0;
+                        },
+                
+                      }
+                    }
+                  </script>
+            </div>
+        </div>
+
+        <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+            <button type="button" onclick="document.getElementById('modal-solucion').close()" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
+            <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Enviar</button>
+        </div>
+    </form>
+</div>
+
+
+{{-- <div class="flex bg-green-200 items-center justify-center ">
     <form wire:submit.prevent="save">
         <div class="grid bg-white rounded-lg shadow-2xl ">
 
@@ -12,7 +67,6 @@
 
           <div class="grid grid-cols-1 mt-5 mx-7">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre Completo</label>
-          {{-- 5 variables --}}
             <input name="VPnombreCompleto" id="VPnombreCompleto" wire:model="VPnombreCompleto"
              class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" type="text" />
              @if($errors->has('VPnombreCompleto'))
@@ -98,4 +152,5 @@
 
         </div>
     </form>
-    </div>
+</div>
+ --}}

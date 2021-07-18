@@ -21,7 +21,7 @@
                                 @livewire('registro-almacen')
                             </div>
                     </div>
-                 </dialog>
+                </dialog>
 
                 <div class="flex flex-col mt-6">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -94,7 +94,7 @@
                                                 Nº Pedido: {{ $detalles->id }}
                                             </div>
                                             <div class=" col-span-3 ">
-                                                Nº Almacen:
+                                                Nº Almacen: {{ $detalles->numeroAlmacen }}
                                             </div>
                                             <div class=" col-span-6 ">
                                                 Fecha Pedido: {{ $detalles->fechaPedido }}
@@ -159,21 +159,18 @@
 
                         </div>
                     </div>
-                 </dialog>
+                </dialog>
                 </div>
                 </div>
                 </div>
             </main>
         </div>
-        </div>
-
     </div>
     <script>
         window.addEventListener('openModal', event =>{
             document.getElementById('modal-detalle').showModal()
         })
     </script>
-
 </div>
 
 

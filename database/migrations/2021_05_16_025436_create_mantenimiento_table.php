@@ -16,7 +16,7 @@ class CreateMantenimientoTable extends Migration
         Schema::create('mantenimiento', function (Blueprint $table) {
             $table->id();
             $table->date('fechaInicio');
-            $table->date('fechaFin');
+            $table->date('fechaFin')->nullable();
             $table->unsignedBigInteger('idAsistencia');
             $table->foreign('idAsistencia')->references('id')->on('asistenciaTecnica');
             $table->timestamps();

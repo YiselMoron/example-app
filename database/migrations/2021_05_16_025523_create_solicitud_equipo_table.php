@@ -19,6 +19,8 @@ class CreateSolicitudEquipoTable extends Migration
             $table->boolean('estado');
             $table->unsignedBigInteger('idPersona');
             $table->foreign('idPersona')->references('id')->on('persona');
+            $table->unsignedBigInteger('idSoporte')->nullable();
+            $table->foreign('idSoporte')->references('id')->on('persona');
             $table->timestamps();
         });
     }

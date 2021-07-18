@@ -23,7 +23,7 @@ class FormularioEquipo extends Model
 
     public function asignacionEquipo()
     {
-        return $this->hasMany(AsignacionEquipo::class,'idFormulario');
+        return $this->hasOne(AsignacionEquipo::class,'idFormulario');
     }
 
 }

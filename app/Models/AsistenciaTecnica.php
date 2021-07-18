@@ -18,11 +18,11 @@ class AsistenciaTecnica extends Model
 
     public function soporte(){
 
-        return $this->hasMany(Soporte::class,'idAsistencia');
+        return $this->hasOne(Soporte::class,'idAsistencia');
     }
 
     public function mantenimiento(){
 
-        return $this->hasMany(Mantenimiento::class,'idAsistencia');
+        return $this->hasOne(Mantenimiento::class,'idAsistencia');
     }
 }

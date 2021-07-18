@@ -3,21 +3,7 @@
 <div class="pt-3">
     <div class="flex h-screen overflow-y-hidden bg-gray-50" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
       <!-- Loading screen -->
-      <div
-        x-ref="loading"
-        class="fixed inset-0 z-50 flex items-center justify-center text-black "
-        style="backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)"
-      >
-        Loading.....
-      </div>
-
-
-
-        <!-- Sidebar footer -->
-        <div class="flex-shrink-0 p-2 border-t max-h-14">
-
-        </div>
-      </aside>
+      
 
       <div class="flex flex-col flex-1 h-full overflow-hidden">
 
@@ -31,63 +17,72 @@
                   <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
                     <thead class="bg-gray-100 border-b-8 border-green-500">
                       <tr>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
                           Nombre
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
                           Tipo Solicitud
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
                           Estado
                         </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                        >
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase" >
                           Area
                         </th>
 
-                        <th scope="col"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
+                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
                           accion
                         </th>
                       </tr>
 
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach ($asistencias as $asistencia)
                         <tr class="transition-all hover:bg-gray-100 hover:shadow-lg">
-                          <td class="px-6 py-4 whitespace-nowrap">
-
-                                <div class="text-sm font-medium text-gray-900">Yisel Moron F</div>
-                                <div class="text-sm text-gray-500">ymoronflores@gmail.com</div>
-
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">Mantenimiento</div>
-                            <div class="text-sm text-gray-500">Soporte/Mantenimiento/Equipo</div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full"
-                            >
-                              Pendiente
-                            </span>
-
-                          </td>
-                          <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">Admin</td>
-                          <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                          </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+  
+                                  <div class="text-sm font-medium text-gray-900">{{ $asistencia->persona->nombreCompleto }}</div>
+                                  <div class="text-sm text-gray-500">{{ $asistencia->persona->user->email }}</div>
+  
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                              <div class="text-sm text-gray-900">Mantenimiento</div>
+                              <div class="text-sm text-gray-500">Soporte/Mantenimiento</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                              <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full" >
+                                Pendiente
+                              </span>
+  
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $asistencia->persona->departamento->nombre }}</td>
+                            <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                              <a wire:click="procesarSolicitud({{ $asistencia->id }}, 'soporte')" class="text-indigo-600 hover:text-indigo-900">Procesar</a>
+                            </td>
                         </tr>
+                        @endforeach
+                        @foreach ($solicitudes as $solicitud)
+                        <tr class="transition-all hover:bg-gray-100 hover:shadow-lg">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">{{ $solicitud->persona->nombreCompleto }}</div>
+                                <div class="text-sm text-gray-500">{{ $solicitud->persona->user->email }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                              <div class="text-sm text-gray-900">Solicitud de equipo</div>
+                              <div class="text-sm text-gray-500">Equipo</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                              <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full" >
+                                Pendiente
+                              </span>
+  
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $solicitud->persona->departamento->nombre }}</td>
+                            <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                              <a wire:click="procesarSolicitud({{ $solicitud->id }}, 'equipo')" class="text-indigo-600 hover:text-indigo-900">Procesar</a>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -99,19 +94,6 @@
 
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-    <script>
-      const setup = () => {
-        return {
-          loading: true,
-          isSidebarOpen: false,
-          toggleSidbarMenu() {
-            this.isSidebarOpen = !this.isSidebarOpen
-          },
-          isSettingsPanelOpen: false,
-          isSearchBoxOpen: false,
-        }
-      }
-    </script>
+    
 </div>
 </div>

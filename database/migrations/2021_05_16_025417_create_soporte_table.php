@@ -16,7 +16,7 @@ class CreateSoporteTable extends Migration
         Schema::create('soporte', function (Blueprint $table) {
             $table->id();
             $table->time('horaInicio');
-            $table->time('horaFin');
+            $table->time('horaFin')->nullable();
             $table->unsignedBigInteger('idAsistencia');
             $table->foreign('idAsistencia')->references('id')->on('asistenciaTecnica');
             $table->timestamps();

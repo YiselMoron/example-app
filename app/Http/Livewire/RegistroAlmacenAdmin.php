@@ -19,19 +19,6 @@ class RegistroAlmacenAdmin extends Component
     ];
 
     public function getDataId($modelId){
-        /* $this->idPedido_edit = $modelId;
-        $chemical = Mechanic::find($this->idPedido_edit);
-        $this->lote = $chemical->lote->code ;
-        $this->masa = $chemical->masa_lineal ;
-        $this->fy = $chemical->fy ;
-        $this->fx = $chemical->fx ;
-        $this->a = $chemical->a ;
-        $this->re = $chemical->re ;
-        $this->d = $chemical->d ;
-        $this->altura = $chemical->altura ;
-        $this->espaciamiento = $chemical->espaciamiento ;
-        $this->gap = $chemical->gap ;
-        $this->angulo = $chemical->angulo ; */
         $this->VAcant = [];
         $this->detalles = PedidoEquipo::where('id', $modelId)->first();
         $this->VAcode = $this->detalles->numeroAlmacen;

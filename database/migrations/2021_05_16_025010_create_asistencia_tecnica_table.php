@@ -16,9 +16,12 @@ class CreateAsistenciaTecnicaTable extends Migration
         Schema::create('asistenciaTecnica', function (Blueprint $table) {
             $table->id();
             $table->string('problema');
-            $table->string('solucion');
+            $table->string('solucion')->nullable();
+            $table->boolean('estado');
             $table->unsignedBigInteger('idPersona');
             $table->foreign('idPersona')->references('id')->on('persona');
+            $table->unsignedBigInteger('idSoporte')->nullable();
+            $table->foreign('idSoporte')->references('id')->on('persona');
             $table->timestamps();
         });
     }
