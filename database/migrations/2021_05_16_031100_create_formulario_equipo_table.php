@@ -16,7 +16,7 @@ class CreateFormularioEquipoTable extends Migration
         Schema::create('formularioEquipo', function (Blueprint $table) {
             $table->id();
             $table->integer('cantidad');
-            $table->string('justificacion');
+            $table->string('justificacion')->nullable();
             $table->unsignedBigInteger('idSolicitud');
             $table->foreign('idSolicitud')->references('id')->on('solicitudEquipo');
             $table->unsignedBigInteger('idEquipo');
