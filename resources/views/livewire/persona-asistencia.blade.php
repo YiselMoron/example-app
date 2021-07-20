@@ -10,36 +10,40 @@
 
         <div class="grid grid-cols-1 gap-4">
             <div x-data="app()" x-cloak>
-                
+
                 <div class="flex-1">
                     <textarea x-model="mensajeText"  name="VAerror" id="VAerror" wire:model="VAerror"
-                      class="mb-2 bg-gray-200 focus:outline-none focus:shadow-outline focus:bg-white border border-transparent rounded-lg py-2 px-4 block w-full appearance-none leading-normal placeholder-gray-700" 
+                      class="mb-2 bg-gray-200 focus:outline-none focus:shadow-outline focus:bg-white border
+                      border-transparent rounded-lg py-2 px-4 block w-full appearance-none leading-normal
+                       placeholder-gray-700"
                       :class="{'border border-red-500': tweetIsOutOfRange() && mensajeText.length != 0 }"
                       rows="3"
                       placeholder="Qué pasó..." maxlength="200"></textarea>
-                      
+
                       <div class="flex justify-between items-center">
 
                         <div>
-                          <span :class="{ 'text-red-600': charactersRemaining() <= 20 && charactersRemaining() > 10, 'text-red-400': charactersRemaining() <= 10 }" class="mr-3 text-sm text-gray-600" x-text="charactersRemaining()"></span>
+                          <span :class="{ 'text-red-600': charactersRemaining() <= 20 && charactersRemaining() >
+                               10, 'text-red-400': charactersRemaining() <= 10 }" class="mr-3 text-sm text-gray-600"
+                                x-text="charactersRemaining()"></span>
                         </div>
                       </div>
                 </div>
                 <script>
                     const MAX_TWEET_LENGTH = 200;
-                
+
                     function app() {
                       return {
                         mensajeText: '',
-                
+
                         charactersRemaining() {
                           return MAX_TWEET_LENGTH - this.mensajeText.length;
                         },
-                
+
                         tweetIsOutOfRange() {
                           return (MAX_TWEET_LENGTH - this.mensajeText.length) == MAX_TWEET_LENGTH || (MAX_TWEET_LENGTH - this.mensajeText.length) < 0;
                         },
-                
+
                       }
                     }
                   </script>

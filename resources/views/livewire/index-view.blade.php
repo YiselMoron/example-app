@@ -3,13 +3,13 @@
 <div class="pt-3">
     <div class="flex h-screen overflow-y-hidden bg-gray-50" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
       <!-- Loading screen -->
-      
+
 
       <div class="flex flex-col flex-1 h-full overflow-hidden">
 
         <!-- Main content -->
         <main class="flex-1 max-h-full p-5 overflow-hidden ">
-         <h3 class="mt-6 text-xl">Soportes Pendientes</h3>
+         <h3 class="mt-6 text-xl">Solicitudes Pendientes</h3>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -40,10 +40,10 @@
                         @foreach ($asistencias as $asistencia)
                         <tr class="transition-all hover:bg-gray-100 hover:shadow-lg">
                             <td class="px-6 py-4 whitespace-nowrap">
-  
+
                                   <div class="text-sm font-medium text-gray-900">{{ $asistencia->persona->nombreCompleto }}</div>
                                   <div class="text-sm text-gray-500">{{ $asistencia->persona->user->email }}</div>
-  
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                               <div class="text-sm text-gray-900">Mantenimiento</div>
@@ -53,7 +53,7 @@
                               <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full" >
                                 Pendiente
                               </span>
-  
+
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $asistencia->persona->departamento->nombre }}</td>
                             <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
@@ -75,7 +75,7 @@
                               <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full" >
                                 Pendiente
                               </span>
-  
+
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $solicitud->persona->departamento->nombre }}</td>
                             <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
@@ -94,6 +94,6 @@
 
       </div>
     </div>
-    
+
 </div>
 </div>

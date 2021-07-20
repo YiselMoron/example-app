@@ -7,9 +7,10 @@
         <div class="flex justify-between h-16 ">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
+                <div class="flex-shrink-0 flex items-center text-green-500">
                     <a href="{{ route('dashboard') }}" >
-                        <label class="font-black" >Las Lomas</label>
+                        <p class="font-black text-center" >Las Lomas</p>
+                        <p class="font-black text-xs" >Primera Siderurgica Boliviana</p>
                     </a>
                 </div>
 

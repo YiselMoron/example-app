@@ -2,11 +2,13 @@
 
     <style>
         html {
-            background: url('{{ asset('img/Principal.png') }}') no-repeat top fixed;
+            background: url('{{ asset('img/Logo1.png') }}') center no-repeat ;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
+            background-size: auto;
+
 
             }
     </style>
