@@ -19,7 +19,7 @@ class CreateSolicitudAlmacenTable extends Migration
             $table->integer('cantidadRecibido')->nullable();
             $table->date('fechaPedido');
             $table->date('fechaRecibido')->nullable();
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->boolean('estado');
             $table->unsignedBigInteger('idPedidoEquipo');
             $table->foreign('idPedidoEquipo')->references('id')->on('pedidoEquipo');

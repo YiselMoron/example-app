@@ -60,7 +60,13 @@ class RegistroAlmacen extends Component
                 $almacen->save();
             }
             DB::commit();
-        }catch(\Exception $e){
+        }
+        catch(\Exception $e){
+            $this->dispatchBrowserEvent('alert',[
+                'type'=>'error',
+                'message'=>"Ocurrio un error. Vulve a intentarlo mas tarde!!"
+            ]);
+
             DB::rollBack();
         }
         $this->VEnombre = null;
@@ -93,11 +99,16 @@ class RegistroAlmacen extends Component
         ]);
 
         if($this->VEid == 0){
-            $equipo = new Equipo;
-            $equipo->nombre = $this->VEnombre;
-            $equipo->Stock = 0;
-            $equipo->save();
-            $this->VEid = $equipo->id;
+            $a = Equipo::where('nombre', $this->VEnombre)->first();
+            if($a) {
+                $this->VEid = $a->id;
+            } else {
+                $equipo = new Equipo;
+                $equipo->nombre = $this->VEnombre;
+                $equipo->Stock = 0;
+                $equipo->save();
+                $this->VEid = $equipo->id;
+            }
         }
 
         $this->lista[] = ['id' => $this->VEid, 'nombre' => $this->VEnombre, 'cantidad' => $this->VAcantidadP, 'descripcion' => $this->VAdescripcion];

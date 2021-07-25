@@ -17,6 +17,11 @@ class EquipoView extends Component
         $this->prompt = " ";
     }
 
+    public function selectItem($id){
+        $this->emit('getDataId', $id);
+        $this->dispatchBrowserEvent('openModalEdit');
+    }
+
     public function render()
     {
         $equipos = Equipo::all();

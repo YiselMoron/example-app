@@ -19,7 +19,7 @@
                                 <input name="VAcode" id="VAcode" wire:model="VAcode"
                                 class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1
                                 focus:outline-none focus:ring-2 focus:ring-green-600
-                                focus:border-transparent" type="text" />
+                                focus:border-transparent disabled:opacity-60" type="text" />
                                 @if($errors->has('VAcode'))
                                     <p>{{$errors->first('VAcode')}}</p>
                                 @endif
@@ -53,7 +53,7 @@
                                 <td class="px-3 py-1 whitespace-nowrap">{{ $detalle->cantidadPedido }}</td>
                                 <td class="px-3 py-1 whitespace-nowrap">
                                     <input type="number" name="VAcant[{{$key}}]" id="VAcant[{{$key}}]" wire:model="VAcant.{{ $key }}" class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1
-                                    focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" style="width: 128px;">
+                                    focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent disabled:opacity-60" style="width: 128px;" >
                                 </td>
                                 <td class="px-3 py-1 whitespace-nowrap">{{ $detalle->descripcion }}</td>
                             </tr>
@@ -70,7 +70,12 @@
 
         <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
             <button type="button" onclick="document.getElementById('modal-almacen').close()" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
-            <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
+            @if ($detalles)
+             @if ($detalles->numeroAlmacen == null)
+             <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
+
+             @endif
+            @endif
         </div>
     </form>
 </div>

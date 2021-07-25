@@ -15,6 +15,20 @@ class RegistroEquipo extends Component
     public $VEstock;
     public $VEmarca;
     public $VEtipoEquipo;
+    public $idX;
+
+    protected $listeners = [
+        'getDataId'
+    ];
+
+    public function getDataId($modelId){
+        $this->idX = $modelId;
+        $equipo = Equipo::where('id', $modelId)->first();
+        $this->VEnombre = $equipo->nombre;
+        $this->VEstock = $equipo->Stock;
+        $this->VEmarca = $equipo->idMarca;
+        $this->VEtipoEquipo = $equipo->idTipoEquipo;
+    }
 
     public function save(){
         $this->validate([
@@ -26,20 +40,31 @@ class RegistroEquipo extends Component
         ]);
         DB::beginTransaction();
         try{
-                $busqueda = Equipo::where('nombre', $this->VEnombre)->first();
-                if($busqueda){
-                    $contar = ($busqueda->Stock+$this->VEstock);
-                    $equipo = Equipo::find($busqueda->id);
-                    $equipo->Stock = $contar;
-                    $equipo->save();
-                }else{
-                    $equipo = new Equipo;
-                    $equipo->nombre = $this->VEnombre;
-                    $equipo->Stock = $this->VEstock;
-                    $equipo->idMarca = $this->VEmarca;
-                    $equipo->idTipoEquipo = $this->VEtipoEquipo;
-                    $equipo->save();
+                if ($this->idX) {
+                    $editE = Equipo::find($this->idX);
+                    $editE->nombre = $this->VEnombre;
+                    $editE->Stock = $this->VEstock;
+                    $editE->idMarca = $this->VEmarca;
+                    $editE->idTipoEquipo = $this->VEtipoEquipo;
+                    $editE->save();
+                    $this->idX = null;
+                } else {
+                    $busqueda = Equipo::where('nombre', $this->VEnombre)->first();
+                    if($busqueda){
+                        $contar = ($busqueda->Stock+$this->VEstock);
+                        $equipo = Equipo::find($busqueda->id);
+                        $equipo->Stock = $contar;
+                        $equipo->save();
+                    }else{
+                        $equipo = new Equipo;
+                        $equipo->nombre = $this->VEnombre;
+                        $equipo->Stock = $this->VEstock;
+                        $equipo->idMarca = $this->VEmarca;
+                        $equipo->idTipoEquipo = $this->VEtipoEquipo;
+                        $equipo->save();
+                    }
                 }
+
                 DB::commit();
             }
             catch(\Exception $e){

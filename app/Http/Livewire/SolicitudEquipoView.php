@@ -17,14 +17,14 @@ class SolicitudEquipoView extends Component
     public function refreshParent(){
         $this->prompt = " ";
     }
-    
+
     public function selectItem($id){
         $this->emit('getDataId', $id);
     }
-    
+
     public function render()
     {
-        $SolicitudEquipos=SolicitudEquipo::where('idSoporte', Auth::user()->id)->get();
+        $SolicitudEquipos=SolicitudEquipo::where('idSoporte', Auth::user()->id)->orderBy('estado')->get();
         return view('livewire.solicitud-equipo-view',compact('SolicitudEquipos'));
     }
 }

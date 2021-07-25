@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Equipo;
 use App\Models\PedidoEquipo;
 use App\Models\SolicitudAlmacen;
 use Livewire\Component;
@@ -43,6 +44,9 @@ class RegistroAlmacenAdmin extends Component
             $item = SolicitudAlmacen::find($detalle->id);
             $item->cantidadRecibido = $this->VAcant[$key];
             $item->save();
+            $equipo = Equipo::find($item->idEquipo);
+            $equipo->Stock = $equipo->Stock + $this->VAcant[$key];
+            $equipo->save();
         }
         $this->emit('refreshParent');
     }

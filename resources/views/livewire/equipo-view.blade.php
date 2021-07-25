@@ -11,11 +11,26 @@
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Inventario</h3> </div>
                 <div class=" ml-auto mt-3">
-                    <button onclick="clearFunction()"
-                    class="px-6 py-2.5  mb-4  text-base
-                    font-semibold rounded-full block  bg-transparent border border-green-500
-                    text-green-500 hover:bg-green-700 hover:text-white
-                    hover:border-green-500 ">+</button>
+
+
+                    <div class="grid grid-cols-2 ">
+
+                        <div class="mx-2">
+                            <a href="/inventario_pdf" class="px-6 py-2.5  mb-4  text-base
+                            font-semibold rounded-full block  bg-transparent border border-green-500
+                            text-green-500 hover:bg-green-700 hover:text-white
+                            hover:border-green-500 ">Reporte</a>
+                        </div>
+
+                        <div class="mx-2">
+                            <button onclick="clearFunction()"
+                                class="px-6 py-2.5  mb-4  text-base
+                                font-semibold rounded-full block  bg-transparent border border-green-500
+                                text-green-500 hover:bg-green-700 hover:text-white
+                                hover:border-green-500 ">+</button>
+                        </div>
+                    </div>
+
                 </div>
                   <!--LLAMAR A REGISTRO + -->
             <dialog id="modal-create-rol" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md ">
@@ -44,6 +59,7 @@
                         text-left text-gray-500 uppercase">Tipo Equipo</th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider
                         text-left text-gray-500 uppercase">Stock</th>
+                        <th></th>
                     </tr>
                     </thead>
 
@@ -71,6 +87,9 @@
                                 <span class="inline-flex px-2 text-xs font-semibold leading-5
                                  text-white bg-green-500 rounded-full">{{$item->Stock}}</span>
                             </td>
+                            <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                <a wire:click="selectItem({{ $item->id }})" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                              </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -89,6 +108,9 @@
                 document.getElementById('modal-create-rol').showModal();
                 document.getElementById("form-equipo").reset();
             }
+            window.addEventListener('openModalEdit', event =>{
+                document.getElementById('modal-create-rol').showModal()
+            })
     </script>
    </div>
 </div>

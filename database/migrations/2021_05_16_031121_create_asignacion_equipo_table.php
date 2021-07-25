@@ -15,8 +15,8 @@ class CreateAsignacionEquipoTable extends Migration
     {
         Schema::create('asignacionEquipo', function (Blueprint $table) {
             $table->id();
-            $table->string('serie');
-            $table->string('codigo');
+            $table->string('serie')->nullable();
+            $table->string('codigo')->nullable();
             $table->date('fechaEntrega');
             $table->unsignedBigInteger('idFormulario');
             $table->foreign('idFormulario')->references('id')->on('formularioEquipo');

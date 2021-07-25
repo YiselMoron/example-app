@@ -10,13 +10,13 @@
                 <div class=" text-left"><h3 class="mt-6 text-xl">PANEL DE ADMINISTRACION</h3> </div>
                 <div class=" ml-auto mt-3">
                     <div class="grid grid-cols-2 ">
-                        
+
                         <div class="mx-2">
                             @can('administrador')
                             <button onclick="clearFunction('equipo')" class="px-6 py-2.5  mb-4  text-base font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">Nuevo equipo</button>
                             @endcan
                         </div>
-                        
+
                         <div class="mx-2">
                             <button onclick="clearFunction('asistencia')" class="px-6 py-2.5  mb-4  text-base font-semibold rounded-full block  bg-transparent border border-green-500  text-green-500 hover:bg-green-700 hover:text-white hover:border-green-500 ">Solicitud de asistencia</button>
                         </div>
@@ -76,29 +76,32 @@
                                   </span>
                                 @break
                             @default
-                              
+
                         @endswitch
                           <span class="text-gray-400 inline-flex items-center leading-none text-sm">
                             6 days
                           </span>
-                              
+
                       </div>
                     </div>
-                                  
+
                   </div>
                 @endforeach
                 @foreach ($solicitudes as $solicitud)
-                <div class="flex my-4 ">
+                <div class="flex my-4 bg-white ">
                     <div class=" rounded-md h-full text-left px-4 py-4 w-full justify-end border-2 border-green-500">
                       <a to="jobdet" class="flex items-center flex-wrap">
                           <span class="font-bold text-lg -mt-2">Solicitud de Equipo</span>
                           <div class="mt-2 mb-3 mx-5">
                             @forelse ($solicitud->folmularioEquipo as $item)
                                 <p class="text-sm text-gray-500 font-bold">
-                                    {{ $item->cantidad }} {{ $item->equipo->nombre }} para {{ $item->justificacion }}
+                                    {{ $item->cantidad }} {{ $item->equipo->nombre }}
+                                    @if ($item->justificacion)
+                                    para {{ $item->justificacion }}
+                                    @endif
                                 </p>
                             @empty
-                                
+
                             @endforelse
                           </div>
                       </a>
@@ -120,19 +123,19 @@
                                   </span>
                                 @break
                             @default
-                              
+
                         @endswitch
                           <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                            6 days
+                            {{ $solicitud->created_at->diffForHumans() }}
                           </span>
-                              
+
                       </div>
                     </div>
-                                  
+
                   </div>
                 @endforeach
-                
-                  
+
+
               </div>
             </div>
           </div>
@@ -156,10 +159,10 @@
                                   Fecha Entregado
                                 </th>
                               </tr>
-        
+
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                    
+
                                 @foreach ($equipos as $equipo)
                                     @if ($equipo->formularioEquipo->solicitudEquipo->estado == 2 && $equipo->formularioEquipo->solicitudEquipo->persona->user->id == Auth::user()->id)
                                     <tr class="transition-all hover:bg-gray-100 hover:shadow-lg text-center">

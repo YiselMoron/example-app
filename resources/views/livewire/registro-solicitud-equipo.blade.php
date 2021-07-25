@@ -34,7 +34,7 @@
                               </span>
                             @break
                         @default
-                          
+
                     @endswitch
                 </div>
             </div>
@@ -47,6 +47,7 @@
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase">Equipo</th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase">Cantidad</th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase">Justificación</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,13 @@
                             <td class="px-3 py-1 whitespace-nowrap">{{ $item->equipo->nombre }}</td>
                             <td class="px-3 py-1 whitespace-nowrap">{{ $item->cantidad }}</td>
                             <td class="px-3 py-1 whitespace-nowrap">{{ $item->justificacion }}</td>
+                            @if ($detalle->estado < 2)
+                                <td class="px-3 py-1 whitespace-nowrap">
+                                    <input type="text" name="serie[{{$key}}]" id="serie[{{$key}}]" wire:model="serie.{{ $key }}" class="py-2 px-3 rounded-lg border-2 border-green-300 mt-1
+                                    focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent disabled:opacity-60" style="width: 128px;" >
+                                </td>
+                                <td><input type="checkbox" wire:click="levelClicked({{$key}})" name="VAestado[{{$key}}]" id="VAestado[{{$key}}]"/></td>
+                            @endif
                         </tr>
                         @empty
                         @endforelse

@@ -1,13 +1,13 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-white" >
+    <div class="flex  overflow-y-hidden bg-white" >
              <!-- Sidebar footer -->
 
-      <div class="flex flex-col flex-1 h-full overflow-hidden">
+      <div class="flex flex-col flex-1  overflow-hidden">
 
         <!-- Main content -->
-        <main class="flex-1 max-h-full p-5 overflow-hidden ">
+        <main class="flex-1  p-5 overflow-hidden ">
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Solicitud Equipo</h3> </div>
                 <dialog id="modal-solicitud-equipo" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md mt-0">
@@ -18,8 +18,8 @@
                     </div>
                 </dialog>
             </div>
-          <div class="flex flex-col mt-6">
-            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="flex flex-col m-6">
+            <div class=" overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden border-b border-gray-500 rounded-md shadow-md">
                   <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
@@ -88,7 +88,7 @@
                                       </span>
                                     @break
                                 @default
-                                  
+
                             @endswitch
 
                           </td>

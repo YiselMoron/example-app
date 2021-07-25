@@ -8,7 +8,7 @@
                     <div class=" text-left"><h3 class="mt-6 text-xl">Solicitud de Equipos</h3></div>
                 </div>
 
-                <dialog id="modal-almacen" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md mt-0">
+                <dialog id="modal-almacen" class=" w-12/12 md:w-11/12 p-5 bg-transparent rounded-md mt-0">
                     <div class="flex flex-col w-full h-auto ">
                             <div>
                                 @livewire('registro-almacen-admin')

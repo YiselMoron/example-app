@@ -42,6 +42,9 @@ Route::get('/', function () {
     Route::get('/Administracion', PersonaAdmin::class)->name('Administracion');
 });
  */
+Route::get('/inventario_pdf', [App\Http\Controllers\InventarioPDFController::class, 'pdf_view'])->name('inventario_pdf');
+Route::get('/equipos_asignados_pdf', [App\Http\Controllers\EquiposAsignadosPDFController::class, 'pdf_view'])->name('equipos_asignados_pdf');
+
 Route::get('dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('auth');
@@ -49,7 +52,7 @@ Route::get('dashboard', function () {
 Route::get('/Administracion', PersonaAdmin::class)->name('Administracion')->middleware(['general']);
 
 Route::middleware('almacen')->group(function () {
-    
+
     Route::get('/Almacen', AlmacenAdmin::class)->name('Almacen');
 });
 

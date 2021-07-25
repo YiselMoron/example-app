@@ -8,6 +8,7 @@ use App\Models\Soporte;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class SolicitudView extends Component
 {
@@ -29,18 +30,29 @@ class SolicitudView extends Component
     }
 
     public function diagnostico($id, $tipo){
-        if ($tipo == 'soporte') {
-            $soporte = new Soporte;
-            $soporte->idAsistencia = $id;
-            $soporte->horaInicio = date('H:i:s');
-            $soporte->save();
-        } else {
-            $mantenimiento = new Mantenimiento;
-            $mantenimiento->idAsistencia = $id;
-            $mantenimiento->fechaInicio = new Carbon();
-            $mantenimiento->save();
+        DB::beginTransaction();
+        try{
+            if ($tipo == 'soporte') {
+                $soporte = new Soporte;
+                $soporte->idAsistencia = $id;
+                $soporte->horaInicio = date('H:i:s');
+                $soporte->save();
+            } else {
+                $mantenimiento = new Mantenimiento;
+                $mantenimiento->idAsistencia = $id;
+                $mantenimiento->fechaInicio = new Carbon();
+                $mantenimiento->save();
+            }
+            DB::commit();
         }
-        
+        catch(\Exception $e){
+            $this->dispatchBrowserEvent('alert',[
+                'type'=>'error',
+                'message'=>"Ocurrio un error. Vulve a intentarlo mas tarde!!"
+            ]);
+
+            DB::rollBack();
+        }
     }
 
     public function finalizar($id, $solicitud, $tipo){

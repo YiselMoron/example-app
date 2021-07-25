@@ -10,6 +10,7 @@ use App\Models\Rol;
 use App\Models\Soporte;
 use Carbon\Carbon;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class RegistroSoporte extends Component
 {
@@ -29,24 +30,36 @@ class RegistroSoporte extends Component
     }
 
     public function save(){
-        if ($this->tipo == 'mantenimiento') {
-            $item = AsistenciaTecnica::find($this->idSolicitud);
-            $item->solucion = $this->VAsolucion;
-            $item->estado = 2;
-            $item->save();
-            $val = Mantenimiento::find($this->idTipo);
-            $val->fechaFin = new Carbon;
-            $val->save();
-        } else {
-            $item = AsistenciaTecnica::find($this->idSolicitud);
-            $item->solucion = $this->VAsolucion;
-            $item->estado = 2;
-            $item->save();
-            $val = Soporte::find($this->idTipo);
-            $val->horaFin = date('H:i:s');
-            $val->save();
+        DB::beginTransaction();
+        try {
+            if ($this->tipo == 'mantenimiento') {
+                $item = AsistenciaTecnica::find($this->idSolicitud);
+                $item->solucion = $this->VAsolucion;
+                $item->estado = 2;
+                $item->save();
+                $val = Mantenimiento::find($this->idTipo);
+                $val->fechaFin = new Carbon;
+                $val->save();
+            } else {
+                $item = AsistenciaTecnica::find($this->idSolicitud);
+                $item->solucion = $this->VAsolucion;
+                $item->estado = 2;
+                $item->save();
+                $val = Soporte::find($this->idTipo);
+                $val->horaFin = date('H:i:s');
+                $val->save();
+            }
+
+            DB::commit();
         }
-        
+        catch(\Exception $e){
+            $this->dispatchBrowserEvent('alert',[
+                'type'=>'error',
+                'message'=>"Ocurrio un error. Vulve a intentarlo mas tarde!!"
+            ]);
+
+            DB::rollBack();
+        }
         $this->emit('refreshParent');
     }
 
