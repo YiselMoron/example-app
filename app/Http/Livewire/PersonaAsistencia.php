@@ -19,6 +19,9 @@ class PersonaAsistencia extends Component
             $asistencia->idPersona = Auth::user()->id;
             $asistencia->estado = 0;
             $asistencia->save();
+
+
+            DB::commit();
         }
         catch(\Exception $e){
             $this->dispatchBrowserEvent('alert',[
@@ -28,6 +31,7 @@ class PersonaAsistencia extends Component
 
             DB::rollBack();
         }
+
         $this->emit('refreshParent');
     }
 

@@ -1,9 +1,9 @@
 <div class="pt-5 mt-5">
     <!-- component -->
     <div class="pt-3">
-        <div class="flex flex-col flex-1 h-full overflow-hidden">
+        <div class="flex flex-col flex-1 overflow-hidden">
             <!-- Main content -->
-            <main class="flex-1 max-h-full p-5 overflow-hidden ">
+            <main class="flex-1 p-5 overflow-hidden ">
                 <div class="grid grid-cols-2">
                     <div class=" text-left"><h3 class="mt-6 text-xl">Solicitud Equipo</h3></div>
                     <div class=" ml-auto mt-3">
@@ -57,15 +57,19 @@
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                        @if ($item->numeroAlmacen)
-                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full">
-                                            ENTREGADO
-                                            </span>
-                                        @else
-                                            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full">
+                                    @if ($item->solicitudAlmacen[0]->estado == 0 || $item->solicitudAlmacen[0]->estado == null)
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full">
                                             PENDIENTE
-                                            </span>
-                                        @endif
+                                        </span>
+                                    @elseif ($item->solicitudAlmacen[0]->estado == 1)
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-blue-500 rounded-full">
+                                        Acceptado
+                                        </span>
+                                    @else
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-red-500 rounded-full">
+                                            Denegado
+                                        </span>
+                                    @endif
 
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium text-center whitespace-nowrap">
@@ -119,15 +123,6 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {{-- @for ($i = 0; $i < $detalles->solicitudAlmacen->count(); $i++)
-                                                    <tr class="transition-all hover:bg-gray-100 hover:shadow-lg text-center">
-                                                        <td class="px-3 py-1 whitespace-nowrap">{{ $item->id }}</td>
-                                                        <td class="px-3 py-1 whitespace-nowrap">{{ $item->id }}</td>
-                                                        <td class="px-3 py-1 whitespace-nowrap">{{ $item->id }}</td>
-                                                        <td class="px-3 py-1 whitespace-nowrap">{{ $item->id }}</td>
-                                                        <td class="px-3 py-1 whitespace-nowrap">{{ $item->id }}</td>
-                                                      </tr>
-                                                    @endfor --}}
                                                     @forelse ($detalles->solicitudAlmacen as $detalle)
                                                     <tr class="transition-all hover:bg-gray-100 hover:shadow-lg text-center">
                                                         <td class="px-3 py-1 whitespace-nowrap">{{ $detalle->equipo->nombre }}</td>

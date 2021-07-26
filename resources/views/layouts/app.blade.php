@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <style>
+    {{-- <style>
         html {
             background: url('{{ asset('img/Inicio.jpg') }}') center no-repeat;
             -webkit-background-size: cover;
@@ -12,7 +12,7 @@
 
 
             }
-    </style>
+    </style> --}}
 
 
     {{-- <img src="img/Inicio.jpg" style="width:auto;height:auto;"> /> --}}

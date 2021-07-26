@@ -1,9 +1,9 @@
 <div class="pt-5 mt-5">
     <!-- component -->
   <div class="pt-3">
-    <div class="flex flex-col flex-1 h-full overflow-hidden">
+    <div class="flex flex-col flex-1 overflow-hidden">
         <!-- Main content -->
-      <main class="flex-1 max-h-full p-5 overflow-hidden ">
+      <main class="flex-1 p-5 overflow-hidden ">
         <div class="grid grid-cols-12 gap-4 mt-6">
           <div class="col-span-12">
             <div class="grid grid-cols-2">

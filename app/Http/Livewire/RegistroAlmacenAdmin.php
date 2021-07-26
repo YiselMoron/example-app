@@ -35,19 +35,30 @@ class RegistroAlmacenAdmin extends Component
         return view('livewire.registro-almacen-admin');
     }
 
-    public function save(){
-        $pedidos = PedidoEquipo::where('id', $this->idPedido)->first();
-        $pedido = PedidoEquipo::find($this->idPedido);
-        $pedido->numeroAlmacen = $this->VAcode;
-        $pedido->save();
-        foreach ($pedidos->solicitudAlmacen as $key => $detalle) {
-            $item = SolicitudAlmacen::find($detalle->id);
-            $item->cantidadRecibido = $this->VAcant[$key];
-            $item->save();
-            $equipo = Equipo::find($item->idEquipo);
-            $equipo->Stock = $equipo->Stock + $this->VAcant[$key];
-            $equipo->save();
+    public function procesar($estado){
+        if ($estado == 1) {
+            $pedidos = PedidoEquipo::where('id', $this->idPedido)->first();
+            $pedido = PedidoEquipo::find($this->idPedido);
+            $pedido->numeroAlmacen = $this->VAcode;
+            $pedido->save();
+            foreach ($pedidos->solicitudAlmacen as $key => $detalle) {
+                $item = SolicitudAlmacen::find($detalle->id);
+                $item->cantidadRecibido = $this->VAcant[$key];
+                $item->estado = 1;
+                $item->save();
+                $equipo = Equipo::find($item->idEquipo);
+                $equipo->Stock = $equipo->Stock + $this->VAcant[$key];
+                $equipo->save();
+            }
+        } else {
+            $pedidos = PedidoEquipo::where('id', $this->idPedido)->first();
+            foreach ($pedidos->solicitudAlmacen as $key => $detalle) {
+                $item = SolicitudAlmacen::find($detalle->id);
+                $item->estado = 2;
+                $item->save();
+            }
         }
+
         $this->emit('refreshParent');
     }
 }

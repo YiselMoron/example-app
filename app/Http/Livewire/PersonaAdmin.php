@@ -24,6 +24,7 @@ class PersonaAdmin extends Component
 
     public function refreshParent(){
         $this->prompt = " ";
+        $this->dispatchBrowserEvent('clearFunction');
     }
 
     public function render()

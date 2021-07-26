@@ -48,10 +48,20 @@ class PersonaEquipo extends Component
                     $almacen->idEquipo = $item['id'];
                     $almacen->save();
                 }
+            }else{
+                $this->dispatchBrowserEvent('alert',[
+                    'type'=>'error',
+                    'message'=>"Intento hacer una peticion vacia, vuelva a intentarlo!!"
+                ]);
             }
 
             DB::commit();
         }catch(\Exception $e){
+            $this->dispatchBrowserEvent('alert',[
+                'type'=>'error',
+                'message'=>"Ocurrio un error. Vulve a intentarlo mas tarde!!"
+            ]);
+
             DB::rollBack();
         }
         $this->VEnombre = null;
@@ -95,6 +105,7 @@ class PersonaEquipo extends Component
                     $this->VEid = $equipo->id;
                 }
             }
+            DB::commit();
         }
         catch(\Exception $e){
             $this->dispatchBrowserEvent('alert',[

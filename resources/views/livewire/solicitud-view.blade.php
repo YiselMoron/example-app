@@ -5,10 +5,10 @@
       <!-- Loading screen -->
 
 
-      <div class="flex flex-col flex-1 h-full overflow-hidden">
+      <div class="flex flex-col flex-1 overflow-hidden">
 
         <!-- Main content -->
-        <main class="flex-1 max-h-full p-5 overflow-hidden ">
+        <main class="flex-1 p-5 overflow-hidden ">
             <dialog id="modal-solucion" class=" w-11/12 md:w-6/12 p-5 bg-transparent rounded-md mt-0">
                 <div class="flex flex-col w-full h-auto ">
                     <div >
@@ -75,7 +75,7 @@
                             {{ $asistencia->solucion }}
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                            
+
                               @switch($asistencia->estado)
                                   @case(1)
                                         <span class="inline-flex px-2 text-xs font-semibold leading-5 text-white bg-green-500 rounded-full">
@@ -88,7 +88,7 @@
                                         </span>
                                       @break
                                   @default
-                                      
+
                               @endswitch
                           </td>
                           <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $asistencia->persona->departamento->nombre }}</td>
@@ -101,7 +101,7 @@
                                     <a wire:click="finalizar({{ $asistencia->soporte->id }}, {{ $asistencia->id }}, 'soporte')" class="text-indigo-600 hover:text-indigo-900">Finalizar</a>
                                 @endif
                             @else
-                                <a wire:click="diagnostico({{ $asistencia->id }}, 'soporte')" class="text-indigo-600 hover:text-indigo-900">Soporte</a> / 
+                                <a wire:click="diagnostico({{ $asistencia->id }}, 'soporte')" class="text-indigo-600 hover:text-indigo-900">Soporte</a> /
                                 <a wire:click="diagnostico({{ $asistencia->id }}, 'mantenimiento')" class="text-indigo-600 hover:text-indigo-900">Mantenimiento</a>
                             @endif
                           </td>

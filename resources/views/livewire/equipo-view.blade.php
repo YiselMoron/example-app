@@ -4,10 +4,10 @@
     <div class="flex bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
 
 
-      <div class="flex flex-col flex-1 h-full overflow-hidden">
+      <div class="flex flex-col flex-1  overflow-hidden">
 
         <!-- Main content -->
-        <main class="flex-1 max-h-full p-5 overflow-hidden ">
+        <main class="flex-1  p-5 overflow-hidden ">
             <div class="grid grid-cols-2">
                 <div class=" text-left"><h3 class="mt-6 text-xl">Inventario</h3> </div>
                 <div class=" ml-auto mt-3">

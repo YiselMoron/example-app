@@ -44,21 +44,29 @@ class RegistroAlmacen extends Component
 
         DB::beginTransaction();
         try{
-            $fecha = new Carbon;
-            $pedido = new PedidoEquipo;
-            $pedido->fechaPedido = $fecha;
-            $pedido->idPersona = Auth::user()->id;
-            $pedido->save();
-            foreach($this->lista as $item){
-                $almacen = new SolicitudAlmacen;
-                $almacen->cantidadPedido = $item['cantidad'];
-                $almacen->fechaPedido = $fecha;
-                $almacen->descripcion = $item['descripcion'];
-                $almacen->estado = 0;
-                $almacen->idPedidoEquipo = $pedido->id;
-                $almacen->idEquipo = $item['id'];
-                $almacen->save();
+            if ($this->lista) {
+                $fecha = new Carbon;
+                $pedido = new PedidoEquipo;
+                $pedido->fechaPedido = $fecha;
+                $pedido->idPersona = Auth::user()->id;
+                $pedido->save();
+                foreach($this->lista as $item){
+                    $almacen = new SolicitudAlmacen;
+                    $almacen->cantidadPedido = $item['cantidad'];
+                    $almacen->fechaPedido = $fecha;
+                    $almacen->descripcion = $item['descripcion'];
+                    $almacen->estado = 0;
+                    $almacen->idPedidoEquipo = $pedido->id;
+                    $almacen->idEquipo = $item['id'];
+                    $almacen->save();
+                }
+            } else {
+                $this->dispatchBrowserEvent('alert',[
+                    'type'=>'error',
+                    'message'=>"Intento hacer una peticion vacia, vuelva a intentarlo!!"
+                ]);
             }
+
             DB::commit();
         }
         catch(\Exception $e){

@@ -5,10 +5,10 @@
       <!-- Loading screen -->
 
 
-      <div class="flex flex-col flex-1 h-full overflow-hidden">
+      <div class="flex flex-col flex-1 overflow-hidden">
 
         <!-- Main content -->
-        <main class="flex-1 max-h-full p-5 overflow-hidden ">
+        <main class="flex-1 p-5 overflow-hidden ">
          <h3 class="mt-6 text-xl">Solicitudes Pendientes</h3>
           <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

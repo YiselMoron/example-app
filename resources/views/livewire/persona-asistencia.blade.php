@@ -1,6 +1,6 @@
 <div class="p-4 m-2 border-green-300 border-opacity-50 bg-white rounded-md shadow-2xl">
 
-    <form wire:submit.prevent="save">
+    <form wire:submit.prevent="save" id="form-equipo">
         <div class="flex justify-center pb-3" >
             <div class="flex">
                 <h1 class="text-gray-600 mt-4 font-bold md:text-2xl
@@ -55,4 +55,9 @@
             <button type="submit" class='w-auto bg-purple-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Enviar</button>
         </div>
     </form>
+    <script>
+        window.addEventListener('clearFunction', event =>{
+            document.getElementById("form-equipo").reset();
+            })
+    </script>
 </div>
