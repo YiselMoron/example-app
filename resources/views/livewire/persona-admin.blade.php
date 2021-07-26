@@ -78,8 +78,8 @@
                             @default
 
                         @endswitch
-                          <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                            6 days
+                        <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                            {{ $asistencia->created_at->diffForHumans() }}
                           </span>
 
                       </div>

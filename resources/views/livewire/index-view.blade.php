@@ -1,7 +1,7 @@
 <div class="pt-5 mt-5">
     <!-- component -->
 <div class="pt-3">
-    <div class="flex h-screen overflow-y-hidden bg-gray-50" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex  overflow-y-hidden bg-gray-50" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
       <!-- Loading screen -->
 
 
