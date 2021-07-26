@@ -2,7 +2,9 @@
     <!-- component -->
   <div class="pt-3">
     <div class="flex flex-col flex-1 overflow-hidden">
-        <!-- Main content -->
+        <!-- Main content
+          cambios
+        -->
       <main class="flex-1 p-5 overflow-hidden ">
         <div class="grid grid-cols-12 gap-4 mt-6">
           <div class="col-span-12">
